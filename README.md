@@ -1,3 +1,3 @@
-# ppss
+# Papers, Please: Save Skoatia
 
 Для примера
