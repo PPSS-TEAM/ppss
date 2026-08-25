@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:82939531d2afd570d41a3321ce2c5d8a$ -->
+<TextureAtlas imagePath="Man0.png">
+    <SubTexture name="Boom-00" x="2" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-01" x="68" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-02" x="134" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-03" x="200" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-04" x="266" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-05" x="332" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-06" x="398" y="2" width="64" height="64"/>
+    <SubTexture name="Boom-07" x="2" y="68" width="64" height="64"/>
+    <SubTexture name="Boom-08" x="68" y="68" width="64" height="64"/>
+    <SubTexture name="Boom-09" x="134" y="68" width="64" height="64"/>
+    <SubTexture name="Boom-10" x="200" y="68" width="64" height="64"/>
+    <SubTexture name="Boom-11" x="266" y="68" width="64" height="64"/>
+    <SubTexture name="Boom-12" x="332" y="68" width="64" height="64"/>
+    <SubTexture name="Grenade-00" x="398" y="68" width="4" height="4"/>
+    <SubTexture name="Grenade-01" x="404" y="68" width="4" height="4"/>
+    <SubTexture name="Guard0-FragA-00" x="410" y="68" width="31" height="32"/>
+    <SubTexture name="Guard0-FragA-01" x="2" y="134" width="31" height="32"/>
+    <SubTexture name="Guard0-FragA-02" x="35" y="134" width="31" height="32"/>
+    <SubTexture name="Guard0-FragA-03" x="68" y="134" width="31" height="32"/>
+    <SubTexture name="Guard0-FragB-00" x="101" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-FragB-01" x="135" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-FragB-02" x="169" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-FragB-03" x="203" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-FragC-00" x="237" y="134" width="29" height="30"/>
+    <SubTexture name="Guard0-FragC-01" x="268" y="134" width="29" height="30"/>
+    <SubTexture name="Guard0-FragC-02" x="299" y="134" width="29" height="30"/>
+    <SubTexture name="Guard0-FragC-03" x="330" y="134" width="29" height="30"/>
+    <SubTexture name="Guard0-Idle 1" x="361" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-Idle 2" x="395" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-KneelAim 1" x="429" y="134" width="32" height="32"/>
+    <SubTexture name="Guard0-KneelShoot 1" x="2" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-KneelShoot 2" x="36" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-KneelShoot 3" x="70" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-KneelShoot 4" x="104" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-StandAim 1" x="138" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-StandShoot 1" x="172" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-StandShoot 2" x="206" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-StandShoot 3" x="240" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-StandShoot 4" x="274" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkH 1" x="308" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkH 2" x="342" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkH 3" x="376" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkH 4" x="410" y="168" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkV 1" x="2" y="202" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkV 2" x="36" y="202" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkV 3" x="70" y="202" width="32" height="32"/>
+    <SubTexture name="Guard0-WalkV 4" x="104" y="202" width="32" height="32"/>
+    <SubTexture name="Man0-Climb 01" x="138" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 02" x="188" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 03" x="238" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 04" x="288" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 05" x="338" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 06" x="388" y="202" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 07" x="2" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 08" x="52" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 09" x="102" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 10" x="152" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 11" x="202" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 12" x="252" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Climb 13" x="302" y="236" width="48" height="32"/>
+    <SubTexture name="Man0-Idle 1" x="352" y="236" width="32" height="32"/>
+    <SubTexture name="Man0-Idle 2" x="386" y="236" width="32" height="32"/>
+    <SubTexture name="Man0-Run 1" x="420" y="236" width="32" height="32"/>
+    <SubTexture name="Man0-Run 2" x="2" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Run 3" x="36" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Run 4" x="70" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Shot 1" x="104" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Shot 2" x="138" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Shot 3" x="172" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Shot 4" x="206" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Shot 5" x="240" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-00" x="274" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-01" x="308" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-02" x="342" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-03" x="376" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-04" x="410" y="270" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-05" x="2" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-06" x="36" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-Throw-07" x="70" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkH 1" x="104" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkH 2" x="138" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkH 3" x="172" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkH 4" x="206" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkV 1" x="240" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkV 2" x="274" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkV 3" x="308" y="304" width="32" height="32"/>
+    <SubTexture name="Man0-WalkV 4" x="342" y="304" width="32" height="32"/>
+</TextureAtlas>

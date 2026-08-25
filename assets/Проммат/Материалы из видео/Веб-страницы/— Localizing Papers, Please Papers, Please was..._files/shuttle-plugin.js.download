@@ -1,0 +1,54 @@
+function DropDown(el) {
+    this.dd = el;
+    this.initEvents();
+}
+DropDown.prototype = {
+    initEvents : function() {
+    	var obj = this;
+        
+        obj.dd.on('click', function(event){
+            $(this).toggleClass('active');
+        	event.stopPropagation();
+        });	
+    }
+}
+        
+$(function() {
+        
+    var dd = new DropDown( $('.dd') );
+        
+    $(document).on('click', function() {
+        // all dropdowns
+        	$('.wrapper-dropdown-3').removeClass('active');
+    });
+});
+
+(function(window){
+        
+    // get vars
+    var searchEl = document.querySelector("#input");
+    var labelEl = document.querySelector("#label");
+        
+    // register clicks and toggle classes
+    labelEl.addEventListener("click",function(){
+        if (classie.has(searchEl,"focus")) {
+        	classie.remove(searchEl,"focus");
+        	classie.remove(labelEl,"active");
+        } else {
+        	classie.add(searchEl,"focus");
+        	document.search.q.focus();
+        	classie.add(labelEl,"active");
+        }
+    });
+        
+    // register clicks outisde search box, and toggle correct classes
+    document.addEventListener("click",function(e){
+        var clickedID = e.target.id;
+        if (clickedID != "search-terms" && clickedID != "search-label") {
+        	if (classie.has(searchEl,"focus")) {
+        		classie.remove(searchEl,"focus");
+        		classie.remove(labelEl,"active");
+        	}
+        }
+    });
+}(window));
