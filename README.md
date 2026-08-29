@@ -4,4 +4,4 @@
 
 # Список всех документов
 
-- [Wiki]() - читать всем!
+- [Wiki](https://github.com/PPSS-TEAM/ppss/tree/main/wiki) - читать всем!
