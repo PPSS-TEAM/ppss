@@ -1,3 +1,25 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores (если используете C#)
+.mono/
+data_*/
+mono_crash.*.json
+
+# System / editor specific
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Собранные билды игры (если складываете их в проект)
+builds/
+export/
