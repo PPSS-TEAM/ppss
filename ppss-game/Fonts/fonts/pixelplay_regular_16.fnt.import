@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://b62v35acaixdr"
+path="res://.godot/imported/pixelplay_regular_16.fnt-a6a04143ef8e5158aa523e0af35c3d40.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/pixelplay_regular_16.fnt"
+dest_files=["res://.godot/imported/pixelplay_regular_16.fnt-a6a04143ef8e5158aa523e0af35c3d40.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

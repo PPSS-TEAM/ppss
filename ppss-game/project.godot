@@ -10,18 +10,44 @@ config_version=5
 
 [application]
 
-config/name="ppss game"
-config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/name="Papers, Please: Save Skoatia"
+config/version="0.0.0.1"
+run/main_scene="uid://dgkiysnmgm2ck"
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="C:\\Users\\Администратор\\Documents\\ppss\\ppss.ico"
+
+[audio]
+
+buses/default_bus_layout="uid://56bht6lw4d2j"
+
+[autoload]
+
+ThemeGlobal="*uid://c4x3k7su7rwy6"
+WindowGlobal="*uid://bhss4xwdw6saw"
+CursorLayer="*uid://gk67mw6pq34a"
+ButtonUp="*uid://dfwhdoml0qpk1"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=4
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
-project/assembly_name="ppss game"
+project/assembly_name="ppss"
+
+[input]
+
+toggle_fullscreen={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 
@@ -29,4 +55,8 @@ project/assembly_name="ppss game"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_vertices_to_pixel=true

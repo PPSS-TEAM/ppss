@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://xvjl4oqxsob"
+path="res://.godot/imported/motorola_screentype_regular_12.fnt-5184c2d4f83012939d47bbd31a7538a3.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/motorola_screentype_regular_12.fnt"
+dest_files=["res://.godot/imported/motorola_screentype_regular_12.fnt-5184c2d4f83012939d47bbd31a7538a3.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

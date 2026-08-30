@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://03gqihuyjf3v"
+path="res://.godot/imported/bmmini_u_regular_8.fnt-afdcf7fe65eacc0717c87e722e2e865e.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/bmmini_u_regular_8.fnt"
+dest_files=["res://.godot/imported/bmmini_u_regular_8.fnt-afdcf7fe65eacc0717c87e722e2e865e.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

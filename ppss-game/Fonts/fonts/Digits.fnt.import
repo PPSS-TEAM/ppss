@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://b2pwq4b2nckwo"
+path="res://.godot/imported/Digits.fnt-7141ff081faf9a8d6ab6610e2829b9eb.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/Digits.fnt"
+dest_files=["res://.godot/imported/Digits.fnt-7141ff081faf9a8d6ab6610e2829b9eb.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
