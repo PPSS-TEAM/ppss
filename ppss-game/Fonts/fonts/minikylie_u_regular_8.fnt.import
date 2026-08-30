@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://cdvvux4gxexgx"
+path="res://.godot/imported/minikylie_u_regular_8.fnt-101ba4ff0bc83503d9cdf5f05d06bd6d.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/minikylie_u_regular_8.fnt"
+dest_files=["res://.godot/imported/minikylie_u_regular_8.fnt-101ba4ff0bc83503d9cdf5f05d06bd6d.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

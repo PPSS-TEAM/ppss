@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bcrdt1hjf5hnh"
+path="res://.godot/imported/5mikropix_regular_8.fnt-c06a19c0c15f2448b1bf299ea2d5f287.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/5mikropix_regular_8.fnt"
+dest_files=["res://.godot/imported/5mikropix_regular_8.fnt-c06a19c0c15f2448b1bf299ea2d5f287.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

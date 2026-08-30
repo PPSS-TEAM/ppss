@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bjfyj385a2ax4"
+path="res://.godot/imported/nokia_cellphone_fc_small_12.fnt-c02eee46a993e3f6d6f2ba3bdfbe9082.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/nokia_cellphone_fc_small_12.fnt"
+dest_files=["res://.godot/imported/nokia_cellphone_fc_small_12.fnt-c02eee46a993e3f6d6f2ba3bdfbe9082.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

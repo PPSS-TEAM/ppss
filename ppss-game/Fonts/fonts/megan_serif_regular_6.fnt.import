@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://deoy3hy53scbk"
+path="res://.godot/imported/megan_serif_regular_6.fnt-05f85b179f90e7d5f066441808379eda.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/megan_serif_regular_6.fnt"
+dest_files=["res://.godot/imported/megan_serif_regular_6.fnt-05f85b179f90e7d5f066441808379eda.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://5hd3mw5hqdts"
+path="res://.godot/imported/commo_regular_6.fnt-f0a78c97596e58a736e321bdff06024f.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/commo_regular_6.fnt"
+dest_files=["res://.godot/imported/commo_regular_6.fnt-f0a78c97596e58a736e321bdff06024f.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

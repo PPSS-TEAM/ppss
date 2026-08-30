@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://blj7dla20io3a"
+path="res://.godot/imported/skinny_regular_6.fnt-5b3753f1902135251833c8a23257371d.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/skinny_regular_6.fnt"
+dest_files=["res://.godot/imported/skinny_regular_6.fnt-5b3753f1902135251833c8a23257371d.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

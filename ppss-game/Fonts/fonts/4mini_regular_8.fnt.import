@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://2wlbhjdddkuy"
+path="res://.godot/imported/4mini_regular_8.fnt-00eb997157b64e8c59bccd5fdf84231b.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/4mini_regular_8.fnt"
+dest_files=["res://.godot/imported/4mini_regular_8.fnt-00eb997157b64e8c59bccd5fdf84231b.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

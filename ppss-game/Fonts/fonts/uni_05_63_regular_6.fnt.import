@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bqam2fc1denfy"
+path="res://.godot/imported/uni_05_63_regular_6.fnt-b46f6ce3e8f6e1b58547af8ae76e208c.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/uni_05_63_regular_6.fnt"
+dest_files=["res://.godot/imported/uni_05_63_regular_6.fnt-b46f6ce3e8f6e1b58547af8ae76e208c.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

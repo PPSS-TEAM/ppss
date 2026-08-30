@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://d0goqf85j0ho"
+path="res://.godot/imported/uni_05_53_regular_6.fnt-7a8f938317b0d43f28c0750d7d564ac2.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fonts/uni_05_53_regular_6.fnt"
+dest_files=["res://.godot/imported/uni_05_53_regular_6.fnt-7a8f938317b0d43f28c0750d7d564ac2.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
