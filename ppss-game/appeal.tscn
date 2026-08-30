@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cl0ilb1ir025g"]
+
+[ext_resource type="Texture2D" uid="uid://bjld6k16ue5ur" path="res://Mainmenu/Background0.png" id="1_luosf"]
+
+[node name="Control" type="Control" unique_id=1093601026]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=666985020]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_luosf")
