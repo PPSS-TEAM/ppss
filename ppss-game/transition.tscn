@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ckfca5l8575mv"]
+
+[node name="transition" type="CanvasLayer" unique_id=1906647987]
+layer = 200
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2071618739]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)

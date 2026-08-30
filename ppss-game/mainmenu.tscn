@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://diahbxunsbb8r" path="res://Mainmenu/PlayButton.png" id="6_7uvds"]
 [ext_resource type="Script" uid="uid://cfwkd716tvilj" path="res://settings_button.gd" id="6_rqglp"]
 [ext_resource type="Texture2D" uid="uid://p2552l3t05d0" path="res://Mainmenu/ModsButton.png" id="7_dihg0"]
+[ext_resource type="Script" uid="uid://fv4lvvlfsn3o" path="res://appeal.gd" id="10_0y70q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ik5pj"]
 atlas = ExtResource("4_igs2m")
@@ -166,7 +167,7 @@ action_mode = 0
 texture_normal = SubResource("AtlasTexture_aql1r")
 texture_pressed = SubResource("AtlasTexture_re6cy")
 
-[node name="Appeal" type="HBoxContainer" parent="." unique_id=1962872145]
+[node name="Appeal" type="VBoxContainer" parent="." unique_id=1610936490]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -180,12 +181,12 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 
-[node name="TextureButton" type="TextureButton" parent="Appeal" unique_id=81857755]
+[node name="AppealButton" type="TextureButton" parent="Appeal" unique_id=81857755]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = SubResource("AtlasTexture_ms5fo")
 texture_pressed = SubResource("AtlasTexture_o4pgi")
+script = ExtResource("10_0y70q")
 
 [connection signal="pressed" from="Exit/UselessButton" to="." method="_on_useless_button_pressed"]
-[connection signal="pressed" from="Appeal/TextureButton" to="." method="_on_appeal_button_pressed"]
