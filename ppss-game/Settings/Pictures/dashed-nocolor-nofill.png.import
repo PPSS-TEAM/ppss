@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddrpkjt1n8x42"
-path="res://.godot/imported/недоступен.png-a33fbde4c0495f3a91fdd14fd6108b75.ctex"
+uid="uid://4kwy36m3br80"
+path="res://.godot/imported/dashed-nocolor-nofill.png-c8933804fc7d144699a3f437ca064650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Settings/недоступен.png"
-dest_files=["res://.godot/imported/недоступен.png-a33fbde4c0495f3a91fdd14fd6108b75.ctex"]
+source_file="res://Settings/Pictures/dashed-nocolor-nofill.png"
+dest_files=["res://.godot/imported/dashed-nocolor-nofill.png-c8933804fc7d144699a3f437ca064650.ctex"]
 
 [params]
 

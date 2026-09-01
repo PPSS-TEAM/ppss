@@ -10,4 +10,4 @@ func _on_button_down() -> void:
 func _on_button_up() -> void:
 	
 	await get_tree().create_timer(0.15).timeout
-	get_tree().change_scene_to_file("res://settings.tscn")
+	get_tree().change_scene_to_file("res://Settings/Settings.tscn")

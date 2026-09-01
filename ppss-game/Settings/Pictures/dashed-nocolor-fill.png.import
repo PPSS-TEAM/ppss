@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7866emp5lw65"
-path="res://.godot/imported/флагшток поднят.png-6ec2551cb200fe943953af312d5ddf7a.ctex"
+uid="uid://b8v8u4f5xk3t8"
+path="res://.godot/imported/dashed-nocolor-fill.png-fc818f5f4bd6c96a0ec096659e2f8a26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Settings/флагшток поднят.png"
-dest_files=["res://.godot/imported/флагшток поднят.png-6ec2551cb200fe943953af312d5ddf7a.ctex"]
+source_file="res://Settings/Pictures/dashed-nocolor-fill.png"
+dest_files=["res://.godot/imported/dashed-nocolor-fill.png-fc818f5f4bd6c96a0ec096659e2f8a26.ctex"]
 
 [params]
 
