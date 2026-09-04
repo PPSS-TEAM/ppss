@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://ckfca5l8575mv"]
 
+[ext_resource type="Script" uid="uid://3jeasu4r2p33" path="res://canvas.gd" id="1_2gi1b"]
+
 [node name="transition" type="CanvasLayer" unique_id=1906647987]
 layer = 200
+script = ExtResource("1_2gi1b")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2071618739]
+modulate = Color(0, 0, 0, 0)
 offset_right = 640.0
 offset_bottom = 360.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
