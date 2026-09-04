@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 func _ready() -> void:
 	button_down.connect(_on_button_down)

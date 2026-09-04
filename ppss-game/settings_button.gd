@@ -10,6 +10,4 @@ func _on_button_down() -> void:
 func _on_button_up() -> void:
 	# Небольшая задержка из твоего шаблона перед началом анимации
 	await get_tree().create_timer(0.15).timeout
-	
-	# Вызываем плавный переход вместо стандартного change_scene_to_file
-	Transition.change_scene("res://settings.tscn", 0.2)
+	get_tree().change_scene_to_file("res://Settings/Settings.tscn")

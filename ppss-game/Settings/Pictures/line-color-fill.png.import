@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm5otcvykyirs"
-path="res://.godot/imported/надписи.png-d446a9af17d456533dfca4acd71a0681.ctex"
+uid="uid://dq6pi7sblfucg"
+path="res://.godot/imported/line-color-fill.png-dc2f145da7da9399c0c3b1f0247e80ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Settings/надписи.png"
-dest_files=["res://.godot/imported/надписи.png-d446a9af17d456533dfca4acd71a0681.ctex"]
+source_file="res://Settings/Pictures/line-color-fill.png"
+dest_files=["res://.godot/imported/line-color-fill.png-dc2f145da7da9399c0c3b1f0247e80ab.ctex"]
 
 [params]
 
