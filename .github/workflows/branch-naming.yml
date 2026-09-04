@@ -1,0 +1,15 @@
+name: Branch Naming
+
+on:
+  pull_request:
+    branches: [dev]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Проверка префикса ветки
+        if: ${{ !startsWith(github.head_ref, 'feature/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'other/') }}
+        run: |
+          echo "Ветка '${{ github.head_ref }}' должна начинаться с feature/ или fix/ (или other/ для спец. случаев)"
+          exit 1

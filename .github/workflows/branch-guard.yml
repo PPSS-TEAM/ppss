@@ -1,0 +1,15 @@
+name: Branch Guard
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-source-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Разрешить merge в main только из dev
+        if: github.head_ref != 'dev'
+        run: |
+          echo "PR в main разрешён только из ветки dev. Текущая ветка: ${{ github.head_ref }}"
+          exit 1
