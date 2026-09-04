@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhrn0lmw5sd1r"
-path="res://.godot/imported/High.png-ea6d16676267a626bd81fb41408ecca5.ctex"
+uid="uid://biu6oiyb6fpqh"
+path="res://.godot/imported/line-color-nofill.png-5a38f6487bf1c8ca93040a338f2d801e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Settings/High.png"
-dest_files=["res://.godot/imported/High.png-ea6d16676267a626bd81fb41408ecca5.ctex"]
+source_file="res://Settings/Pictures/line-color-nofill.png"
+dest_files=["res://.godot/imported/line-color-nofill.png-5a38f6487bf1c8ca93040a338f2d801e.ctex"]
 
 [params]
 
