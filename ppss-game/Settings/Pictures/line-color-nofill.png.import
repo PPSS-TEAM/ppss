@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsdxxe54gooil"
-path="res://.godot/imported/dashed-nocolor.png-496f218fe3242f5c793b6b3cfc2148a0.ctex"
+uid="uid://biu6oiyb6fpqh"
+path="res://.godot/imported/line-color-nofill.png-5a38f6487bf1c8ca93040a338f2d801e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Settings/Pictures/dashed-nocolor.png"
-dest_files=["res://.godot/imported/dashed-nocolor.png-496f218fe3242f5c793b6b3cfc2148a0.ctex"]
+source_file="res://Settings/Pictures/line-color-nofill.png"
+dest_files=["res://.godot/imported/line-color-nofill.png-5a38f6487bf1c8ca93040a338f2d801e.ctex"]
 
 [params]
 
