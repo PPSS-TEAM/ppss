@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ctvhkjut2wgaj"]
 
-[ext_resource type="Script" uid="uid://byv8p3t28uyo6" path="res://Settings/Scripts/Settings.gd" id="1_5p68s"]
-[ext_resource type="Texture2D" uid="uid://baftxr7xm8pkm" path="res://Mainmenu/Background2.png" id="2_ygfwu"]
-[ext_resource type="FontFile" uid="uid://dimgm7q31ifta" path="res://Fonts/pixelplay--shnmk14.ttf" id="3_okdie"]
-[ext_resource type="Script" uid="uid://eyslfjw3u4k6" path="res://Settings/Scripts/DoneSettings.gd" id="5_5p68s"]
-[ext_resource type="Texture2D" uid="uid://b8v8u4f5xk3t8" path="res://Settings/Pictures/dashed-nocolor-fill.png" id="5_carl2"]
-[ext_resource type="Theme" uid="uid://y0iju1x8mux3" path="res://Settings/theme.tres" id="5_idwoe"]
-[ext_resource type="Texture2D" uid="uid://4kwy36m3br80" path="res://Settings/Pictures/dashed-nocolor-nofill.png" id="5_wupaj"]
-[ext_resource type="Texture2D" uid="uid://biu6oiyb6fpqh" path="res://Settings/Pictures/line-color-nofill.png" id="7_carl2"]
-[ext_resource type="Texture2D" uid="uid://dq6pi7sblfucg" path="res://Settings/Pictures/line-color-fill.png" id="8_wupaj"]
+[ext_resource type="Script" uid="uid://byv8p3t28uyo6" path="res://settings/settings.gd" id="1_5p68s"]
+[ext_resource type="Texture2D" uid="uid://baftxr7xm8pkm" path="res://main_menu/images/Background2.png" id="2_ygfwu"]
+[ext_resource type="FontFile" uid="uid://dimgm7q31ifta" path="res://fonts/pixelplay--shnmk14.ttf" id="3_okdie"]
+[ext_resource type="Texture2D" uid="uid://b8v8u4f5xk3t8" path="res://settings/images/dashed-nocolor-fill.png" id="5_carl2"]
+[ext_resource type="Theme" uid="uid://y0iju1x8mux3" path="res://settings/theme.tres" id="5_idwoe"]
+[ext_resource type="Texture2D" uid="uid://4kwy36m3br80" path="res://settings/images/dashed-nocolor-nofill.png" id="5_wupaj"]
+[ext_resource type="Texture2D" uid="uid://biu6oiyb6fpqh" path="res://settings/images/line-color-nofill.png" id="7_carl2"]
+[ext_resource type="Texture2D" uid="uid://dq6pi7sblfucg" path="res://settings/images/line-color-fill.png" id="8_wupaj"]
+[ext_resource type="Script" uid="uid://he8h16w7rsu0" path="res://global/btn_scene.gd" id="9_u2716"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qvvor"]
 texture = ExtResource("5_wupaj")
@@ -574,4 +574,5 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_yhj5i")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_lpfoj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_fcd5q")
 text = "ГОТОВО"
-script = ExtResource("5_5p68s")
+script = ExtResource("9_u2716")
+target_scene_path = "uid://btmbotd3xlwf5"

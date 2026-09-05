@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bj2b5r3vesial"
-path="res://.godot/imported/84-Orange.ttf-824f9f74772ad3636bab71f976c5fbd8.fontdata"
+path="res://.godot/imported/84-Orange.ttf-4b671fa6ea48cb109a6758f31817f650.fontdata"
 
 [deps]
 
-source_file="res://Fonts/84-Orange.ttf"
-dest_files=["res://.godot/imported/84-Orange.ttf-824f9f74772ad3636bab71f976c5fbd8.fontdata"]
+source_file="res://fonts/84-Orange.ttf"
+dest_files=["res://.godot/imported/84-Orange.ttf-4b671fa6ea48cb109a6758f31817f650.fontdata"]
 
 [params]
 

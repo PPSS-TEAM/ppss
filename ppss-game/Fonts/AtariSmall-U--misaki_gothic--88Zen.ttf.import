@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://df7t4hxbi8jh1"
-path="res://.godot/imported/AtariSmall-U--misaki_gothic--88Zen.ttf-cf2a8ae213478744adf60812a7c14a55.fontdata"
+path="res://.godot/imported/AtariSmall-U--misaki_gothic--88Zen.ttf-0a2c0214ddd8e5e0b77438e6e095dd81.fontdata"
 
 [deps]
 
-source_file="res://Fonts/AtariSmall-U--misaki_gothic--88Zen.ttf"
-dest_files=["res://.godot/imported/AtariSmall-U--misaki_gothic--88Zen.ttf-cf2a8ae213478744adf60812a7c14a55.fontdata"]
+source_file="res://fonts/AtariSmall-U--misaki_gothic--88Zen.ttf"
+dest_files=["res://.godot/imported/AtariSmall-U--misaki_gothic--88Zen.ttf-0a2c0214ddd8e5e0b77438e6e095dd81.fontdata"]
 
 [params]
 

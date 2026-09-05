@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://4g37qgd4jrd6"
-path="res://.godot/imported/53Veda-U--misaki_gothic.ttf-d46ebf1e0117e89b25b040cfa9470047.fontdata"
+path="res://.godot/imported/53Veda-U--misaki_gothic.ttf-414ee0c511d364ebe83ff5b91661f167.fontdata"
 
 [deps]
 
-source_file="res://Fonts/53Veda-U--misaki_gothic.ttf"
-dest_files=["res://.godot/imported/53Veda-U--misaki_gothic.ttf-d46ebf1e0117e89b25b040cfa9470047.fontdata"]
+source_file="res://fonts/53Veda-U--misaki_gothic.ttf"
+dest_files=["res://.godot/imported/53Veda-U--misaki_gothic.ttf-414ee0c511d364ebe83ff5b91661f167.fontdata"]
 
 [params]
 

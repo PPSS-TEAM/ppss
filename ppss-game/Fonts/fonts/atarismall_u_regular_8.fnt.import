@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://cj2vixpay66bq"
-path="res://.godot/imported/atarismall_u_regular_8.fnt-9004335acb97438cd14d269dbcaa441e.fontdata"
+path="res://.godot/imported/atarismall_u_regular_8.fnt-27428c91db457485032efdf17232354e.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/atarismall_u_regular_8.fnt"
-dest_files=["res://.godot/imported/atarismall_u_regular_8.fnt-9004335acb97438cd14d269dbcaa441e.fontdata"]
+source_file="res://fonts/fonts/atarismall_u_regular_8.fnt"
+dest_files=["res://.godot/imported/atarismall_u_regular_8.fnt-27428c91db457485032efdf17232354e.fontdata"]
 
 [params]
 

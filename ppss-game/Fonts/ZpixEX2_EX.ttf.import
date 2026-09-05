@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://caon3kejrl5um"
-path="res://.godot/imported/ZpixEX2_EX.ttf-c4ea270664a5ddcdc8338300624f3eb9.fontdata"
+path="res://.godot/imported/ZpixEX2_EX.ttf-a007052578fffd3ee28f3a23955dbe95.fontdata"
 
 [deps]
 
-source_file="res://Fonts/ZpixEX2_EX.ttf"
-dest_files=["res://.godot/imported/ZpixEX2_EX.ttf-c4ea270664a5ddcdc8338300624f3eb9.fontdata"]
+source_file="res://fonts/ZpixEX2_EX.ttf"
+dest_files=["res://.godot/imported/ZpixEX2_EX.ttf-a007052578fffd3ee28f3a23955dbe95.fontdata"]
 
 [params]
 

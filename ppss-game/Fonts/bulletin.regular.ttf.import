@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ddmy3lcag2385"
-path="res://.godot/imported/bulletin.regular.ttf-44096495d4cd1f03da1301606ddf8fee.fontdata"
+path="res://.godot/imported/bulletin.regular.ttf-d7aa296119eac3d73650f592d7568b8e.fontdata"
 
 [deps]
 
-source_file="res://Fonts/bulletin.regular.ttf"
-dest_files=["res://.godot/imported/bulletin.regular.ttf-44096495d4cd1f03da1301606ddf8fee.fontdata"]
+source_file="res://fonts/bulletin.regular.ttf"
+dest_files=["res://.godot/imported/bulletin.regular.ttf-d7aa296119eac3d73650f592d7568b8e.fontdata"]
 
 [params]
 

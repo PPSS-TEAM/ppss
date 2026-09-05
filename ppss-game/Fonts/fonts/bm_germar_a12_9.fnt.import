@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://dcy83mxrws50r"
-path="res://.godot/imported/bm_germar_a12_9.fnt-45e44b26b2164b28566b5cc7f3d3055c.fontdata"
+path="res://.godot/imported/bm_germar_a12_9.fnt-18df78af27934cca1783161ebc0ec8f7.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/bm_germar_a12_9.fnt"
-dest_files=["res://.godot/imported/bm_germar_a12_9.fnt-45e44b26b2164b28566b5cc7f3d3055c.fontdata"]
+source_file="res://fonts/fonts/bm_germar_a12_9.fnt"
+dest_files=["res://.godot/imported/bm_germar_a12_9.fnt-18df78af27934cca1783161ebc0ec8f7.fontdata"]
 
 [params]
 
