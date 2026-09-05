@@ -23,7 +23,8 @@ buses/default_bus_layout="uid://56bht6lw4d2j"
 
 [autoload]
 
-ThemeGlobal="*uid://c4x3k7su7rwy6"
+Preload="*uid://d15qu1dnaqjja"
+BackgroundMusic="*uid://bumlmh27mwxd8"
 WindowGlobal="*uid://bhss4xwdw6saw"
 CursorLayer="*uid://gk67mw6pq34a"
 Transition="*uid://ckfca5l8575mv"
@@ -34,8 +35,8 @@ ButtonSound="*uid://dqxphdnua6htr"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=4
+window/size/resizable=false
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
 window/stretch/scale_mode="integer"
 
 [dotnet]
