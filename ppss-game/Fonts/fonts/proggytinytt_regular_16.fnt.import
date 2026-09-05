@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://cipbkiga202b1"
-path="res://.godot/imported/proggytinytt_regular_16.fnt-3b8ce226257962b744ce6e38bb2fc7a2.fontdata"
+path="res://.godot/imported/proggytinytt_regular_16.fnt-690eda24af99dce60ca9d57ca3bbb40c.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/proggytinytt_regular_16.fnt"
-dest_files=["res://.godot/imported/proggytinytt_regular_16.fnt-3b8ce226257962b744ce6e38bb2fc7a2.fontdata"]
+source_file="res://fonts/fonts/proggytinytt_regular_16.fnt"
+dest_files=["res://.godot/imported/proggytinytt_regular_16.fnt-690eda24af99dce60ca9d57ca3bbb40c.fontdata"]
 
 [params]
 

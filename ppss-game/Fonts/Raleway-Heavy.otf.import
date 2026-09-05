@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cmi71jb2oq6ov"
-path="res://.godot/imported/Raleway-Heavy.otf-f1fd8d6359046464d8e74bad7b7bc113.fontdata"
+path="res://.godot/imported/Raleway-Heavy.otf-24667dbb38776edeecfeff569c2b12b1.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Raleway-Heavy.otf"
-dest_files=["res://.godot/imported/Raleway-Heavy.otf-f1fd8d6359046464d8e74bad7b7bc113.fontdata"]
+source_file="res://fonts/Raleway-Heavy.otf"
+dest_files=["res://.godot/imported/Raleway-Heavy.otf-24667dbb38776edeecfeff569c2b12b1.fontdata"]
 
 [params]
 

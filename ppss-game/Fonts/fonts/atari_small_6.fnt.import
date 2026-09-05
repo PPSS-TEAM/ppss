@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://5vx5kg67g11g"
-path="res://.godot/imported/atari_small_6.fnt-8cca16c44db8d33fd986062be8729643.fontdata"
+path="res://.godot/imported/atari_small_6.fnt-8e12f3cf9b5ad53f5f7078c405a95d4c.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/atari_small_6.fnt"
-dest_files=["res://.godot/imported/atari_small_6.fnt-8cca16c44db8d33fd986062be8729643.fontdata"]
+source_file="res://fonts/fonts/atari_small_6.fnt"
+dest_files=["res://.godot/imported/atari_small_6.fnt-8e12f3cf9b5ad53f5f7078c405a95d4c.fontdata"]
 
 [params]
 

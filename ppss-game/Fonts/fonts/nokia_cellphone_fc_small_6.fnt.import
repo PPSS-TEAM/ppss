@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://bf7x5xvmbvmei"
-path="res://.godot/imported/nokia_cellphone_fc_small_6.fnt-c5effb9c3f60c87b09b1f41e67010ed1.fontdata"
+path="res://.godot/imported/nokia_cellphone_fc_small_6.fnt-0ef6bdc9ee0a4ab9b6b5fe43d6ad981b.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/nokia_cellphone_fc_small_6.fnt"
-dest_files=["res://.godot/imported/nokia_cellphone_fc_small_6.fnt-c5effb9c3f60c87b09b1f41e67010ed1.fontdata"]
+source_file="res://fonts/fonts/nokia_cellphone_fc_small_6.fnt"
+dest_files=["res://.godot/imported/nokia_cellphone_fc_small_6.fnt-0ef6bdc9ee0a4ab9b6b5fe43d6ad981b.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bmg8b7c0evu2k"
-path="res://.godot/imported/PlainBlack--EncientGermanGothic.ttf-e1584f4d223336c91f6a336fd40d7e3f.fontdata"
+path="res://.godot/imported/PlainBlack--EncientGermanGothic.ttf-27a2dcdf2b038fe148fac4b4023ada4f.fontdata"
 
 [deps]
 
-source_file="res://Fonts/PlainBlack--EncientGermanGothic.ttf"
-dest_files=["res://.godot/imported/PlainBlack--EncientGermanGothic.ttf-e1584f4d223336c91f6a336fd40d7e3f.fontdata"]
+source_file="res://fonts/PlainBlack--EncientGermanGothic.ttf"
+dest_files=["res://.godot/imported/PlainBlack--EncientGermanGothic.ttf-27a2dcdf2b038fe148fac4b4023ada4f.fontdata"]
 
 [params]
 

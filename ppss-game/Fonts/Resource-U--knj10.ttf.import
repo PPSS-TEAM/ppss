@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b2klqgr7pvtje"
-path="res://.godot/imported/Resource-U--knj10.ttf-b278faf186b56c083b5d62441a6cb9b5.fontdata"
+path="res://.godot/imported/Resource-U--knj10.ttf-cbefbd99c475a11ee86f1942916f08f1.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Resource-U--knj10.ttf"
-dest_files=["res://.godot/imported/Resource-U--knj10.ttf-b278faf186b56c083b5d62441a6cb9b5.fontdata"]
+source_file="res://fonts/Resource-U--knj10.ttf"
+dest_files=["res://.godot/imported/Resource-U--knj10.ttf-cbefbd99c475a11ee86f1942916f08f1.fontdata"]
 
 [params]
 

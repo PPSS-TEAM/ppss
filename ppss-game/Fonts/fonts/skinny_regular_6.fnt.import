@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://blj7dla20io3a"
-path="res://.godot/imported/skinny_regular_6.fnt-5b3753f1902135251833c8a23257371d.fontdata"
+path="res://.godot/imported/skinny_regular_6.fnt-c2da52459b213ff4e6970ecbb3dc067d.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/skinny_regular_6.fnt"
-dest_files=["res://.godot/imported/skinny_regular_6.fnt-5b3753f1902135251833c8a23257371d.fontdata"]
+source_file="res://fonts/fonts/skinny_regular_6.fnt"
+dest_files=["res://.godot/imported/skinny_regular_6.fnt-c2da52459b213ff4e6970ecbb3dc067d.fontdata"]
 
 [params]
 

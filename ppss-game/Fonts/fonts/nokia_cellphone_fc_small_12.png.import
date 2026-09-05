@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cblmmck0e3txg"
-path="res://.godot/imported/nokia_cellphone_fc_small_12.png-2ccad1ba36425c4288302ecc98d174b7.ctex"
+path="res://.godot/imported/nokia_cellphone_fc_small_12.png-c62ac71a6e1e0256b2ea578324a38485.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/nokia_cellphone_fc_small_12.png"
-dest_files=["res://.godot/imported/nokia_cellphone_fc_small_12.png-2ccad1ba36425c4288302ecc98d174b7.ctex"]
+source_file="res://fonts/fonts/nokia_cellphone_fc_small_12.png"
+dest_files=["res://.godot/imported/nokia_cellphone_fc_small_12.png-c62ac71a6e1e0256b2ea578324a38485.ctex"]
 
 [params]
 

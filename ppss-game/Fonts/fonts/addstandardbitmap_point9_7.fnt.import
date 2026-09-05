@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://hq7m6yveu2ii"
-path="res://.godot/imported/addstandardbitmap_point9_7.fnt-3333d39120dda1158a86b0d797375282.fontdata"
+path="res://.godot/imported/addstandardbitmap_point9_7.fnt-8d1e8181ecd95a49ae35424d571e2afb.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/addstandardbitmap_point9_7.fnt"
-dest_files=["res://.godot/imported/addstandardbitmap_point9_7.fnt-3333d39120dda1158a86b0d797375282.fontdata"]
+source_file="res://fonts/fonts/addstandardbitmap_point9_7.fnt"
+dest_files=["res://.godot/imported/addstandardbitmap_point9_7.fnt-8d1e8181ecd95a49ae35424d571e2afb.fontdata"]
 
 [params]
 

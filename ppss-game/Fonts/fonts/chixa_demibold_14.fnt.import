@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://c5a8g5ej6cnq6"
-path="res://.godot/imported/chixa_demibold_14.fnt-40e032e1689163bfede5bd2bef9bc2db.fontdata"
+path="res://.godot/imported/chixa_demibold_14.fnt-b6977349301125423e2b1baa80b19eee.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/chixa_demibold_14.fnt"
-dest_files=["res://.godot/imported/chixa_demibold_14.fnt-40e032e1689163bfede5bd2bef9bc2db.fontdata"]
+source_file="res://fonts/fonts/chixa_demibold_14.fnt"
+dest_files=["res://.godot/imported/chixa_demibold_14.fnt-b6977349301125423e2b1baa80b19eee.fontdata"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://demnl5rnnvxkk"
-path="res://.godot/imported/atari_small_6.png-2341a85f7ac7047d6c739faa77917404.ctex"
+path="res://.godot/imported/atari_small_6.png-c641d93df2c467122429a91fc02c6ff7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/atari_small_6.png"
-dest_files=["res://.godot/imported/atari_small_6.png-2341a85f7ac7047d6c739faa77917404.ctex"]
+source_file="res://fonts/fonts/atari_small_6.png"
+dest_files=["res://.godot/imported/atari_small_6.png-c641d93df2c467122429a91fc02c6ff7.ctex"]
 
 [params]
 

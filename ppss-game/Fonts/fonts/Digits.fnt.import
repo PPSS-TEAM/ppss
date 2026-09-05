@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://b2pwq4b2nckwo"
-path="res://.godot/imported/Digits.fnt-7141ff081faf9a8d6ab6610e2829b9eb.fontdata"
+path="res://.godot/imported/Digits.fnt-cb666d68b031740322781136aa536267.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/Digits.fnt"
-dest_files=["res://.godot/imported/Digits.fnt-7141ff081faf9a8d6ab6610e2829b9eb.fontdata"]
+source_file="res://fonts/fonts/Digits.fnt"
+dest_files=["res://.godot/imported/Digits.fnt-cb666d68b031740322781136aa536267.fontdata"]
 
 [params]
 

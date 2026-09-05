@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://chq6u1vil27jx"
-path="res://.godot/imported/ChixaDemiBold--shnmk12b.ttf-cf92641ee1f97c4b6f7312a588d812a4.fontdata"
+path="res://.godot/imported/ChixaDemiBold--shnmk12b.ttf-9977426f21ffcb8676ea72510c299ad6.fontdata"
 
 [deps]
 
-source_file="res://Fonts/ChixaDemiBold--shnmk12b.ttf"
-dest_files=["res://.godot/imported/ChixaDemiBold--shnmk12b.ttf-cf92641ee1f97c4b6f7312a588d812a4.fontdata"]
+source_file="res://fonts/ChixaDemiBold--shnmk12b.ttf"
+dest_files=["res://.godot/imported/ChixaDemiBold--shnmk12b.ttf-9977426f21ffcb8676ea72510c299ad6.fontdata"]
 
 [params]
 

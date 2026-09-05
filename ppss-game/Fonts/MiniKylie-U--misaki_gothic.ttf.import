@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cpkg47liwyfxj"
-path="res://.godot/imported/MiniKylie-U--misaki_gothic.ttf-743bd0223226cd7771a52dcc187e2bfc.fontdata"
+path="res://.godot/imported/MiniKylie-U--misaki_gothic.ttf-7584da2e8a947d11159e61d6a136e1ac.fontdata"
 
 [deps]
 
-source_file="res://Fonts/MiniKylie-U--misaki_gothic.ttf"
-dest_files=["res://.godot/imported/MiniKylie-U--misaki_gothic.ttf-743bd0223226cd7771a52dcc187e2bfc.fontdata"]
+source_file="res://fonts/MiniKylie-U--misaki_gothic.ttf"
+dest_files=["res://.godot/imported/MiniKylie-U--misaki_gothic.ttf-7584da2e8a947d11159e61d6a136e1ac.fontdata"]
 
 [params]
 

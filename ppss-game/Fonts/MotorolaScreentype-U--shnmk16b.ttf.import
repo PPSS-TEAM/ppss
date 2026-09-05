@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cmt4ram5w33j7"
-path="res://.godot/imported/MotorolaScreentype-U--shnmk16b.ttf-0021e7dac0e2f795b7b811436b6fb609.fontdata"
+path="res://.godot/imported/MotorolaScreentype-U--shnmk16b.ttf-d9f4ea9826a01e02ddf14524cff5768f.fontdata"
 
 [deps]
 
-source_file="res://Fonts/MotorolaScreentype-U--shnmk16b.ttf"
-dest_files=["res://.godot/imported/MotorolaScreentype-U--shnmk16b.ttf-0021e7dac0e2f795b7b811436b6fb609.fontdata"]
+source_file="res://fonts/MotorolaScreentype-U--shnmk16b.ttf"
+dest_files=["res://.godot/imported/MotorolaScreentype-U--shnmk16b.ttf-d9f4ea9826a01e02ddf14524cff5768f.fontdata"]
 
 [params]
 
