@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cq0jn1pyoh5cl"
-path="res://.godot/imported/minikylie_minikylie_6.png-5030b2e6cf8a68a571984c253a55ff2e.ctex"
+path="res://.godot/imported/minikylie_minikylie_6.png-1c571582345d4322aa605a39ad1afa98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/minikylie_minikylie_6.png"
-dest_files=["res://.godot/imported/minikylie_minikylie_6.png-5030b2e6cf8a68a571984c253a55ff2e.ctex"]
+source_file="res://fonts/fonts/minikylie_minikylie_6.png"
+dest_files=["res://.godot/imported/minikylie_minikylie_6.png-1c571582345d4322aa605a39ad1afa98.ctex"]
 
 [params]
 

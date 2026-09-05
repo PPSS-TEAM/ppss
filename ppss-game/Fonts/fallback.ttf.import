@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://em3hqmy4kct3"
-path="res://.godot/imported/fallback.ttf-960dbe5dbd12ead64e7da31c4669c13a.fontdata"
+path="res://.godot/imported/fallback.ttf-32260a208c083a72d5037d6b350699c2.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fallback.ttf"
-dest_files=["res://.godot/imported/fallback.ttf-960dbe5dbd12ead64e7da31c4669c13a.fontdata"]
+source_file="res://fonts/fallback.ttf"
+dest_files=["res://.godot/imported/fallback.ttf-32260a208c083a72d5037d6b350699c2.fontdata"]
 
 [params]
 

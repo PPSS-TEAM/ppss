@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dikna1slihjvc"
-path="res://.godot/imported/motorolascreentype_u_regular_16.png-a43fc03da11a4073492753d064b3ed49.ctex"
+path="res://.godot/imported/motorolascreentype_u_regular_16.png-4cafc946bdadfebb8ca4e99ad120ced5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/motorolascreentype_u_regular_16.png"
-dest_files=["res://.godot/imported/motorolascreentype_u_regular_16.png-a43fc03da11a4073492753d064b3ed49.ctex"]
+source_file="res://fonts/fonts/motorolascreentype_u_regular_16.png"
+dest_files=["res://.godot/imported/motorolascreentype_u_regular_16.png-4cafc946bdadfebb8ca4e99ad120ced5.ctex"]
 
 [params]
 

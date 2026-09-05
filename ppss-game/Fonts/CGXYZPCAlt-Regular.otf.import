@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c8mpsr851hqmt"
-path="res://.godot/imported/CGXYZPCAlt-Regular.otf-a1610cb87ebadd03f0c952c96cdb0d9f.fontdata"
+path="res://.godot/imported/CGXYZPCAlt-Regular.otf-7a3efd0a62807f7c339a03af3606cdd7.fontdata"
 
 [deps]
 
-source_file="res://Fonts/CGXYZPCAlt-Regular.otf"
-dest_files=["res://.godot/imported/CGXYZPCAlt-Regular.otf-a1610cb87ebadd03f0c952c96cdb0d9f.fontdata"]
+source_file="res://fonts/CGXYZPCAlt-Regular.otf"
+dest_files=["res://.godot/imported/CGXYZPCAlt-Regular.otf-7a3efd0a62807f7c339a03af3606cdd7.fontdata"]
 
 [params]
 

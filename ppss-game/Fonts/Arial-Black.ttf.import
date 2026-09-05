@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cle3vl41eccq5"
-path="res://.godot/imported/Arial-Black.ttf-c96c5b8cedceac1602031345fa1eeef7.fontdata"
+path="res://.godot/imported/Arial-Black.ttf-352e2cdb30c92695c197b444f15560b5.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Arial-Black.ttf"
-dest_files=["res://.godot/imported/Arial-Black.ttf-c96c5b8cedceac1602031345fa1eeef7.fontdata"]
+source_file="res://fonts/Arial-Black.ttf"
+dest_files=["res://.godot/imported/Arial-Black.ttf-352e2cdb30c92695c197b444f15560b5.fontdata"]
 
 [params]
 

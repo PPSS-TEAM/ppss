@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://mw3col46wx1g"
-path="res://.godot/imported/pixelplay_regular_12.fnt-1d6bcca796324e4184a13c8db60a30a3.fontdata"
+path="res://.godot/imported/pixelplay_regular_12.fnt-eaf37ce020de4d232cacf249be1ef76a.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/pixelplay_regular_12.fnt"
-dest_files=["res://.godot/imported/pixelplay_regular_12.fnt-1d6bcca796324e4184a13c8db60a30a3.fontdata"]
+source_file="res://fonts/fonts/pixelplay_regular_12.fnt"
+dest_files=["res://.godot/imported/pixelplay_regular_12.fnt-eaf37ce020de4d232cacf249be1ef76a.fontdata"]
 
 [params]
 

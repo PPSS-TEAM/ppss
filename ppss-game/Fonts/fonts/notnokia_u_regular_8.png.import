@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chll0ie3hnf86"
-path="res://.godot/imported/notnokia_u_regular_8.png-eee4313d9519d3fd2fcfc968cbe2e354.ctex"
+path="res://.godot/imported/notnokia_u_regular_8.png-b6104572ac1aca2688bb6df6585b94cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/notnokia_u_regular_8.png"
-dest_files=["res://.godot/imported/notnokia_u_regular_8.png-eee4313d9519d3fd2fcfc968cbe2e354.ctex"]
+source_file="res://fonts/fonts/notnokia_u_regular_8.png"
+dest_files=["res://.godot/imported/notnokia_u_regular_8.png-b6104572ac1aca2688bb6df6585b94cd.ctex"]
 
 [params]
 

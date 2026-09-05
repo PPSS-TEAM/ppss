@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://cehc5f26uo4mj"
-path="res://.godot/imported/pixantiqua_medium_9.fnt-0217b949ef0ca9e7aad2cab7b3456ec7.fontdata"
+path="res://.godot/imported/pixantiqua_medium_9.fnt-b1c99a4f6bff2df0a689f33158242db0.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/pixantiqua_medium_9.fnt"
-dest_files=["res://.godot/imported/pixantiqua_medium_9.fnt-0217b949ef0ca9e7aad2cab7b3456ec7.fontdata"]
+source_file="res://fonts/fonts/pixantiqua_medium_9.fnt"
+dest_files=["res://.godot/imported/pixantiqua_medium_9.fnt-b1c99a4f6bff2df0a689f33158242db0.fontdata"]
 
 [params]
 

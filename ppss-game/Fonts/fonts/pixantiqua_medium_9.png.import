@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csd52rwnkmbrm"
-path="res://.godot/imported/pixantiqua_medium_9.png-245ea263f7a111c6d1c64aafee6d4667.ctex"
+path="res://.godot/imported/pixantiqua_medium_9.png-e4006f4c74ad3d55ea8535acdc2d9b9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/pixantiqua_medium_9.png"
-dest_files=["res://.godot/imported/pixantiqua_medium_9.png-245ea263f7a111c6d1c64aafee6d4667.ctex"]
+source_file="res://fonts/fonts/pixantiqua_medium_9.png"
+dest_files=["res://.godot/imported/pixantiqua_medium_9.png-e4006f4c74ad3d55ea8535acdc2d9b9e.ctex"]
 
 [params]
 

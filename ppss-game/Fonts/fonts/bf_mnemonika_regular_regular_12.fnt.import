@@ -3,12 +3,12 @@
 importer="font_data_bmfont"
 type="FontFile"
 uid="uid://b5cqo3mvwufc8"
-path="res://.godot/imported/bf_mnemonika_regular_regular_12.fnt-04394ac075eb55af6f9dda47127c9a54.fontdata"
+path="res://.godot/imported/bf_mnemonika_regular_regular_12.fnt-b43a688b75c1376052ea111025b15c8b.fontdata"
 
 [deps]
 
-source_file="res://Fonts/fonts/bf_mnemonika_regular_regular_12.fnt"
-dest_files=["res://.godot/imported/bf_mnemonika_regular_regular_12.fnt-04394ac075eb55af6f9dda47127c9a54.fontdata"]
+source_file="res://fonts/fonts/bf_mnemonika_regular_regular_12.fnt"
+dest_files=["res://.godot/imported/bf_mnemonika_regular_regular_12.fnt-b43a688b75c1376052ea111025b15c8b.fontdata"]
 
 [params]
 
