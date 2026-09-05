@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dw2oix2igijt6"
-path="res://.godot/imported/border-boom.wav-ddec95e4ca21227b334bb20f55976fee.sample"
+uid="uid://dcwf1gq6wmbxb"
+path="res://.godot/imported/text-reveal0.wav-adc1f76f5dc2e285caa83981e41c83f6.sample"
 
 [deps]
 
-source_file="res://sound/border-boom.wav"
-dest_files=["res://.godot/imported/border-boom.wav-ddec95e4ca21227b334bb20f55976fee.sample"]
+source_file="res://sounds/text-reveal0.wav"
+dest_files=["res://.godot/imported/text-reveal0.wav-adc1f76f5dc2e285caa83981e41c83f6.sample"]
 
 [params]
 

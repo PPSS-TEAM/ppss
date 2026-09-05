@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dgkiysnmgm2ck"]
 
-[ext_resource type="Script" uid="uid://wrajwgaejcdh" path="res://cutscenes/intro/Quote.gd" id="1_4yivr"]
-[ext_resource type="Texture2D" uid="uid://d0lso4nt8jv4s" path="res://cutscenes/intro/Quote.png" id="1_gjrx4"]
+[ext_resource type="Script" uid="uid://wrajwgaejcdh" path="res://cutscenes/intro/intro.gd" id="1_4yivr"]
+[ext_resource type="Texture2D" uid="uid://d0lso4nt8jv4s" path="res://cutscenes/intro/intro.png" id="1_gjrx4"]
 [ext_resource type="FontFile" uid="uid://chq6u1vil27jx" path="res://fonts/ChixaDemiBold--shnmk12b.ttf" id="2_sb8jg"]
-[ext_resource type="AudioStream" uid="uid://cjmvvgfg2eeyc" path="res://sound/text-reveal3.wav" id="4_33sem"]
+[ext_resource type="AudioStream" uid="uid://cjmvvgfg2eeyc" path="res://sounds/text-reveal3.wav" id="4_33sem"]
 
-[node name="Quote" type="Control" unique_id=279090434]
+[node name="intro" type="Control" unique_id=279090434]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_4yivr")
+next_scene = "uid://cxj3xmtr4m6wf"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1877031393]
 layout_mode = 1

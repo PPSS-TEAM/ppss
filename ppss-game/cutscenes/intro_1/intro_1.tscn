@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bck0j5dyuxmqr" path="res://cutscenes/intro_1/images/papers.png" id="2_a5y5a"]
 [ext_resource type="Texture2D" uid="uid://ddphpg7k6cybo" path="res://cutscenes/intro_1/images/please.png" id="3_4lno3"]
 [ext_resource type="Texture2D" uid="uid://dporq13wv5irp" path="res://cutscenes/intro_1/images/ss.png" id="4_w3gfi"]
-[ext_resource type="AudioStream" uid="uid://dw2oix2igijt6" path="res://sound/border-boom.wav" id="5_4lno3"]
+[ext_resource type="AudioStream" uid="uid://dw2oix2igijt6" path="res://sounds/border-boom.wav" id="5_4lno3"]
 
 [sub_resource type="Animation" id="Animation_l5mv6"]
 resource_name = "Logo"
