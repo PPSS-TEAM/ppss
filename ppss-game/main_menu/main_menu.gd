@@ -8,21 +8,18 @@ func _ready() -> void:
 	else:
 		_init = true
 
-	print("Гитлер воскрес!")
+	print("_ready")
 
 func _on_play_button_pressed() -> void:
-	print("нихуя.")
+	print("_on_play_button_pressed")
 
 func _on_useless_button_pressed() -> void:
-	print("хуй")
-
+	print("_on_useless_button_pressed")
 	await get_tree().create_timer(0.2).timeout
-
-	print("Пошёл нахуй.")
 	get_tree().quit()
 
 
 func _on_appeal_button_pressed() -> void:
-	print("обра")
+	print("_on_appeal_button_pressed")
 	var appeal_url := "https://t.me/appealppss/3"
 	OS.shell_open(appeal_url)
