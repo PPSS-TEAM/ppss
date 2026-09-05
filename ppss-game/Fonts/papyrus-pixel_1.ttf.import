@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c151aejl1qnu8"
-path="res://.godot/imported/papyrus-pixel_1.ttf-cb878dffdab3e29737696c3a6697c70b.fontdata"
+path="res://.godot/imported/papyrus-pixel_1.ttf-34efd920e7f3a2400b95d99738cf260a.fontdata"
 
 [deps]
 
-source_file="res://Fonts/papyrus-pixel_1.ttf"
-dest_files=["res://.godot/imported/papyrus-pixel_1.ttf-cb878dffdab3e29737696c3a6697c70b.fontdata"]
+source_file="res://fonts/papyrus-pixel_1.ttf"
+dest_files=["res://.godot/imported/papyrus-pixel_1.ttf-34efd920e7f3a2400b95d99738cf260a.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b21vcrs6ypsq6"
-path="res://.godot/imported/RightyUsesLeftHand.ttf-925ccb0e17af46f5915b01406b977f9f.fontdata"
+path="res://.godot/imported/RightyUsesLeftHand.ttf-566d364c61700eb79380e917137207cd.fontdata"
 
 [deps]
 
-source_file="res://Fonts/RightyUsesLeftHand.ttf"
-dest_files=["res://.godot/imported/RightyUsesLeftHand.ttf-925ccb0e17af46f5915b01406b977f9f.fontdata"]
+source_file="res://fonts/RightyUsesLeftHand.ttf"
+dest_files=["res://.godot/imported/RightyUsesLeftHand.ttf-566d364c61700eb79380e917137207cd.fontdata"]
 
 [params]
 

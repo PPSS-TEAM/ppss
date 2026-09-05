@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uy6nhq716ykh"
-path="res://.godot/imported/5mikropix_regular_8.png-cac0928e9ec7bb4464803e0fb7bd9139.ctex"
+path="res://.godot/imported/5mikropix_regular_8.png-df0499c21d9365231eb74781a1316c46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/5mikropix_regular_8.png"
-dest_files=["res://.godot/imported/5mikropix_regular_8.png-cac0928e9ec7bb4464803e0fb7bd9139.ctex"]
+source_file="res://fonts/fonts/5mikropix_regular_8.png"
+dest_files=["res://.godot/imported/5mikropix_regular_8.png-df0499c21d9365231eb74781a1316c46.ctex"]
 
 [params]
 

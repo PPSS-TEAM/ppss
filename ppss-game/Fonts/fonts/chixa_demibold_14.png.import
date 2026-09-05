@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ydipviiggk5s"
-path="res://.godot/imported/chixa_demibold_14.png-e670cd53443e81e02c1adab0f6a529fb.ctex"
+path="res://.godot/imported/chixa_demibold_14.png-dc7f6d78bceeb46e0190d4f66e197536.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/chixa_demibold_14.png"
-dest_files=["res://.godot/imported/chixa_demibold_14.png-e670cd53443e81e02c1adab0f6a529fb.ctex"]
+source_file="res://fonts/fonts/chixa_demibold_14.png"
+dest_files=["res://.godot/imported/chixa_demibold_14.png-dc7f6d78bceeb46e0190d4f66e197536.ctex"]
 
 [params]
 

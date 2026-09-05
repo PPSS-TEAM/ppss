@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dkccn1oaejxh8"
-path="res://.godot/imported/microsoftsansserif.ttf-098d11c2a3a17efddb0a6068bcafb9ff.fontdata"
+path="res://.godot/imported/microsoftsansserif.ttf-2f250772232c1b547c87d4da23542024.fontdata"
 
 [deps]
 
-source_file="res://Fonts/microsoftsansserif.ttf"
-dest_files=["res://.godot/imported/microsoftsansserif.ttf-098d11c2a3a17efddb0a6068bcafb9ff.fontdata"]
+source_file="res://fonts/microsoftsansserif.ttf"
+dest_files=["res://.godot/imported/microsoftsansserif.ttf-2f250772232c1b547c87d4da23542024.fontdata"]
 
 [params]
 

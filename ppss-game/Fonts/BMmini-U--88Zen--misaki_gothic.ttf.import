@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://brwhxifu3gq87"
-path="res://.godot/imported/BMmini-U--88Zen--misaki_gothic.ttf-561a8074bcb9bffd672c6d928d7e3931.fontdata"
+path="res://.godot/imported/BMmini-U--88Zen--misaki_gothic.ttf-f87202ec83900aa03e3a7999b962bdf2.fontdata"
 
 [deps]
 
-source_file="res://Fonts/BMmini-U--88Zen--misaki_gothic.ttf"
-dest_files=["res://.godot/imported/BMmini-U--88Zen--misaki_gothic.ttf-561a8074bcb9bffd672c6d928d7e3931.fontdata"]
+source_file="res://fonts/BMmini-U--88Zen--misaki_gothic.ttf"
+dest_files=["res://.godot/imported/BMmini-U--88Zen--misaki_gothic.ttf-f87202ec83900aa03e3a7999b962bdf2.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dimgm7q31ifta"
-path="res://.godot/imported/pixelplay--shnmk14.ttf-7d4aa411894381ed701d6a4660a115cb.fontdata"
+path="res://.godot/imported/pixelplay--shnmk14.ttf-091c5d06a7ce06c75d290a1515a8cc00.fontdata"
 
 [deps]
 
-source_file="res://Fonts/pixelplay--shnmk14.ttf"
-dest_files=["res://.godot/imported/pixelplay--shnmk14.ttf-7d4aa411894381ed701d6a4660a115cb.fontdata"]
+source_file="res://fonts/pixelplay--shnmk14.ttf"
+dest_files=["res://.godot/imported/pixelplay--shnmk14.ttf-091c5d06a7ce06c75d290a1515a8cc00.fontdata"]
 
 [params]
 

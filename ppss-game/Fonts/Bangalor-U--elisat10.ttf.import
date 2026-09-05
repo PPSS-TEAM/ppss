@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dcnpgod3ec44f"
-path="res://.godot/imported/Bangalor-U--elisat10.ttf-aa68255ef6b5cc6eb4a409902224132d.fontdata"
+path="res://.godot/imported/Bangalor-U--elisat10.ttf-fb175933d7f4bd3792eec62129329ac4.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Bangalor-U--elisat10.ttf"
-dest_files=["res://.godot/imported/Bangalor-U--elisat10.ttf-aa68255ef6b5cc6eb4a409902224132d.fontdata"]
+source_file="res://fonts/Bangalor-U--elisat10.ttf"
+dest_files=["res://.godot/imported/Bangalor-U--elisat10.ttf-fb175933d7f4bd3792eec62129329ac4.fontdata"]
 
 [params]
 

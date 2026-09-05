@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh5smwil27bns"
-path="res://.godot/imported/Digits.png-b7350be8338fbf1afc6f232dc765d808.ctex"
+path="res://.godot/imported/Digits.png-96058285f6cf23f8d4e2978c7efa13a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fonts/fonts/Digits.png"
-dest_files=["res://.godot/imported/Digits.png-b7350be8338fbf1afc6f232dc765d808.ctex"]
+source_file="res://fonts/fonts/Digits.png"
+dest_files=["res://.godot/imported/Digits.png-96058285f6cf23f8d4e2978c7efa13a3.ctex"]
 
 [params]
 

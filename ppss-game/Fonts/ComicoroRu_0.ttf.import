@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bih101dlnwj4b"
-path="res://.godot/imported/ComicoroRu_0.ttf-91f2d4271fcc36110f826d9c0e383fe7.fontdata"
+path="res://.godot/imported/ComicoroRu_0.ttf-68416a756a8b0ae9ba985fed7220eea2.fontdata"
 
 [deps]
 
-source_file="res://Fonts/ComicoroRu_0.ttf"
-dest_files=["res://.godot/imported/ComicoroRu_0.ttf-91f2d4271fcc36110f826d9c0e383fe7.fontdata"]
+source_file="res://fonts/ComicoroRu_0.ttf"
+dest_files=["res://.godot/imported/ComicoroRu_0.ttf-68416a756a8b0ae9ba985fed7220eea2.fontdata"]
 
 [params]
 

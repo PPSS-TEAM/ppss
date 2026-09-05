@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://07vmoq5lpfwo"
-path="res://.godot/imported/HUDSonicX1-Regular.otf-4da582611bd2681b1b49f3dde2b66a42.fontdata"
+path="res://.godot/imported/HUDSonicX1-Regular.otf-f9cf1ed573c85c3ea19dc93160dffb05.fontdata"
 
 [deps]
 
-source_file="res://Fonts/HUDSonicX1-Regular.otf"
-dest_files=["res://.godot/imported/HUDSonicX1-Regular.otf-4da582611bd2681b1b49f3dde2b66a42.fontdata"]
+source_file="res://fonts/HUDSonicX1-Regular.otf"
+dest_files=["res://.godot/imported/HUDSonicX1-Regular.otf-f9cf1ed573c85c3ea19dc93160dffb05.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://duwkbm6djadtt"
-path="res://.godot/imported/Agitprop_xyecoc_edition.ttf-5ffa3022cc3bd44d0739fc53edb67615.fontdata"
+path="res://.godot/imported/Agitprop_xyecoc_edition.ttf-4e4dd2081f95bf3fe1af88d0a3524f93.fontdata"
 
 [deps]
 
-source_file="res://Fonts/Agitprop_xyecoc_edition.ttf"
-dest_files=["res://.godot/imported/Agitprop_xyecoc_edition.ttf-5ffa3022cc3bd44d0739fc53edb67615.fontdata"]
+source_file="res://fonts/Agitprop_xyecoc_edition.ttf"
+dest_files=["res://.godot/imported/Agitprop_xyecoc_edition.ttf-4e4dd2081f95bf3fe1af88d0a3524f93.fontdata"]
 
 [params]
 

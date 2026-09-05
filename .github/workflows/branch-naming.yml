@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Проверка префикса ветки
-        if: ${{ !startsWith(github.head_ref, 'feature/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'other/') }}
+        if: ${{ !startsWith(github.head_ref, 'feature/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'other/') && !startsWith(github.head_ref, 'main') }}
         run: |
-          echo "Ветка '${{ github.head_ref }}' должна начинаться с feature/ или fix/ (или other/ для спец. случаев)"
+          echo "Ветка '${{ github.head_ref }}' должна начинаться с feature/ или fix/ (или other/main для спец. случаев)"
           exit 1

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c8y1s5ml4prvk"
-path="res://.godot/imported/PROPAGAN.ttf-8472d6e3bb74922576dc3ba2646d5aad.fontdata"
+path="res://.godot/imported/PROPAGAN.ttf-7ee1bae88e8067c9cffe0256ed40ed68.fontdata"
 
 [deps]
 
-source_file="res://Fonts/PROPAGAN.ttf"
-dest_files=["res://.godot/imported/PROPAGAN.ttf-8472d6e3bb74922576dc3ba2646d5aad.fontdata"]
+source_file="res://fonts/PROPAGAN.ttf"
+dest_files=["res://.godot/imported/PROPAGAN.ttf-7ee1bae88e8067c9cffe0256ed40ed68.fontdata"]
 
 [params]
 

@@ -15,7 +15,7 @@ config/version="0.0.0.1"
 run/main_scene="uid://dgkiysnmgm2ck"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="C:\\Users\\Администратор\\Documents\\ppss\\ppss.ico"
+config/icon="res://icon.svg"
 
 [audio]
 
@@ -26,8 +26,8 @@ buses/default_bus_layout="uid://56bht6lw4d2j"
 ThemeGlobal="*uid://c4x3k7su7rwy6"
 WindowGlobal="*uid://bhss4xwdw6saw"
 CursorLayer="*uid://gk67mw6pq34a"
-ButtonUp="*uid://dfwhdoml0qpk1"
 Transition="*uid://ckfca5l8575mv"
+ButtonSound="*uid://dqxphdnua6htr"
 
 [display]
 
@@ -41,6 +41,10 @@ window/stretch/scale_mode="integer"
 [dotnet]
 
 project/assembly_name="ppss"
+
+[global_group]
+
+Intro=""
 
 [input]
 

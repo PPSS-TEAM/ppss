@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dmv5t7jt7mgt3"
-path="res://.godot/imported/5mikropix--misaki_gothic.ttf-df562278f0271e13a3e40e6d4739ac6b.fontdata"
+path="res://.godot/imported/5mikropix--misaki_gothic.ttf-ac91c9e4f3f00198ea0a278fc83c83fb.fontdata"
 
 [deps]
 
-source_file="res://Fonts/5mikropix--misaki_gothic.ttf"
-dest_files=["res://.godot/imported/5mikropix--misaki_gothic.ttf-df562278f0271e13a3e40e6d4739ac6b.fontdata"]
+source_file="res://fonts/5mikropix--misaki_gothic.ttf"
+dest_files=["res://.godot/imported/5mikropix--misaki_gothic.ttf-ac91c9e4f3f00198ea0a278fc83c83fb.fontdata"]
 
 [params]
 

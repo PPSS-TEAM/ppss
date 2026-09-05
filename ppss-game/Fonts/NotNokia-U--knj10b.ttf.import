@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://br2t4ks7grs0r"
-path="res://.godot/imported/NotNokia-U--knj10b.ttf-b339600fbfe4fe929ce849743efb08ac.fontdata"
+path="res://.godot/imported/NotNokia-U--knj10b.ttf-ae7fcd85e1e9e4c4e527c9cbe887a03f.fontdata"
 
 [deps]
 
-source_file="res://Fonts/NotNokia-U--knj10b.ttf"
-dest_files=["res://.godot/imported/NotNokia-U--knj10b.ttf-b339600fbfe4fe929ce849743efb08ac.fontdata"]
+source_file="res://fonts/NotNokia-U--knj10b.ttf"
+dest_files=["res://.godot/imported/NotNokia-U--knj10b.ttf-ae7fcd85e1e9e4c4e527c9cbe887a03f.fontdata"]
 
 [params]
 
