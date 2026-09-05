@@ -12,11 +12,15 @@ DisplayServer.WINDOW_MODE_MAXIMIZED
 
 @onready var resolution_option = $WindowSize/OptionButton
 var resolutions = [
+	Vector2i(640, 360),
+	Vector2i(800, 600),
+	Vector2i(1024, 768),
 	Vector2i(1280, 720),
+	Vector2i(1366, 768),
 	Vector2i(1600, 900),
 	Vector2i(1920, 1080),
 	Vector2i(2560, 1440),
-	Vector2i(3840, 2160),
+	Vector2i(3840, 2160)
 ]
 
 @onready var sound_btn_plus = $SoundVolume/ButtonPlus
@@ -63,15 +67,14 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		resolution_option.disabled = false
-	
+	WindowGlobal.center_window()
+	_on_settings_changed()
+
 func _on_resolution_selected(index: int) -> void:
 	var new_size = resolutions[index]
 	DisplayServer.window_set_size(new_size)
-
-	var screen = DisplayServer.window_get_current_screen()
-	var screen_rect = DisplayServer.screen_get_usable_rect(screen)
-	var target_pos = screen_rect.position + (screen_rect.size - new_size) / 2
-	DisplayServer.window_set_position(target_pos)
+	WindowGlobal.center_window()
+	_on_settings_changed()
 
 func _on_sound_btn_pressed(is_plus: bool) -> void:
 	var step = 0.1
@@ -80,6 +83,7 @@ func _on_sound_btn_pressed(is_plus: bool) -> void:
 	new_value = clampf(new_value, 0.0, 1.0)
 	AudioServer.set_bus_volume_db(sound_bus_index, linear_to_db(new_value))
 	sound_bar.value = snapped(new_value, step)
+	_on_settings_changed()
 
 func _on_music_btn_pressed(is_plus: bool) -> void:
 	var step = 0.1
@@ -88,3 +92,20 @@ func _on_music_btn_pressed(is_plus: bool) -> void:
 	new_value = clampf(new_value, 0.0, 1.0)
 	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(new_value))
 	music_bar.value = snapped(new_value, step)
+	_on_settings_changed()
+
+func _on_settings_changed() -> void:
+	var config = ConfigFile.new()
+	
+	config.set_value("display", "fullscreen", true)
+	config.set_value("display", "resolution_x", DisplayServer.window_get_size().x)
+	config.set_value("display", "resolution_y", DisplayServer.window_get_size().y)
+
+	config.set_value("volume", "music", music_bar.value)
+	config.set_value("volume", "sound", sound_bar.value)
+
+	var e = config.save("user://settings.cfg")
+	if e == OK:
+		print("Настройки сохранены через ConfigFile!")
+	else:
+		print("Ошибка сохранения: ", e)
