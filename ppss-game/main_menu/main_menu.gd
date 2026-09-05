@@ -21,5 +21,5 @@ func _on_useless_button_pressed() -> void:
 
 func _on_appeal_button_pressed() -> void:
 	print("_on_appeal_button_pressed")
-	var appeal_url := "https://t.me/appealppss/3"
+	var appeal_url := "https://ppss-team.github.io/appeal"
 	OS.shell_open(appeal_url)
