@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dq6pi7sblfucg"
-path="res://.godot/imported/line-color-fill.png-1b235c8ff18157b4e46eea77980c88e8.ctex"
+path="res://.godot/imported/line-color-fill.png-439923e3a50f418e0173c301f62faf2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://settings/images/line-color-fill.png"
-dest_files=["res://.godot/imported/line-color-fill.png-1b235c8ff18157b4e46eea77980c88e8.ctex"]
+source_file="res://Settings/images/line-color-fill.png"
+dest_files=["res://.godot/imported/line-color-fill.png-439923e3a50f418e0173c301f62faf2c.ctex"]
 
 [params]
 

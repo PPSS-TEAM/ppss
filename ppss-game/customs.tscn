@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://q0efy3c2vu8r"]
+
+[ext_resource type="Texture2D" uid="uid://d18fxyu4s3x4i" path="res://environment/Workspace.png" id="1_yshom"]
+[ext_resource type="Texture2D" uid="uid://bf3gh77b8xy0a" path="res://environment/floor.png" id="2_7hscl"]
+[ext_resource type="Texture2D" uid="uid://1tcw5eqp1rvt" path="res://environment/Drawer.png" id="3_svott"]
+[ext_resource type="Texture2D" uid="uid://d2rn76arqyo5k" path="res://environment/Desk.png" id="4_v61rj"]
+[ext_resource type="Texture2D" uid="uid://dpx2uofy464ch" path="res://environment/Wall.png" id="5_hc8im"]
+
+[node name="customs" type="Node2D" unique_id=440544678]
+
+[node name="Workspace" type="Sprite2D" parent="." unique_id=981132725]
+position = Vector2(427, 240)
+
+[node name="Workspace2" type="Sprite2D" parent="." unique_id=288693160]
+position = Vector2(426.5, 240)
+texture = ExtResource("1_yshom")
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=1544905180]
+position = Vector2(320, 60)
+texture = ExtResource("2_7hscl")
+
+[node name="Drawer" type="Sprite2D" parent="." unique_id=1508888359]
+position = Vector2(187.5, 296.5)
+texture = ExtResource("3_svott")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=1649463838]
+position = Vector2(106.5, 296.5)
+texture = ExtResource("4_v61rj")
+
+[node name="Wall" type="Sprite2D" parent="." unique_id=210543480]
+position = Vector2(106.5, 176.5)
+texture = ExtResource("5_hc8im")

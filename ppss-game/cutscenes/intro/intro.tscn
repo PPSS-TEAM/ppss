@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wrajwgaejcdh" path="res://cutscenes/intro/intro.gd" id="1_4yivr"]
 [ext_resource type="Texture2D" uid="uid://d0lso4nt8jv4s" path="res://cutscenes/intro/intro.png" id="1_gjrx4"]
-[ext_resource type="FontFile" uid="uid://chq6u1vil27jx" path="res://fonts/ChixaDemiBold--shnmk12b.ttf" id="2_sb8jg"]
+[ext_resource type="FontFile" uid="uid://chq6u1vil27jx" path="res://Fonts/ChixaDemiBold--shnmk12b.ttf" id="2_sb8jg"]
 [ext_resource type="AudioStream" uid="uid://cjmvvgfg2eeyc" path="res://sounds/text-reveal3.wav" id="4_33sem"]
 
 [node name="intro" type="Control" unique_id=279090434]
