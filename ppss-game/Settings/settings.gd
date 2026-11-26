@@ -97,7 +97,7 @@ func _on_music_btn_pressed(is_plus: bool) -> void:
 func _on_settings_changed() -> void:
 	var config = ConfigFile.new()
 	
-	config.set_value("display", "fullscreen", true)
+	config.set_value("display", "fullscreen", fullscreen_checkbox.button_pressed)
 	config.set_value("display", "resolution_x", DisplayServer.window_get_size().x)
 	config.set_value("display", "resolution_y", DisplayServer.window_get_size().y)
 

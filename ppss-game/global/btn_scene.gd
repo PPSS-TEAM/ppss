@@ -20,4 +20,3 @@ func _on_button_pressed() -> void:
 	var error = get_tree().change_scene_to_file(target_scene_path)
 	if error != OK:
 		push_error("Кнопка '%s': Не удалось загрузить сцену. Код ошибки: %d" % [name, error])
-

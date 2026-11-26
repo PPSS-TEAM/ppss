@@ -1,0 +1,1108 @@
+﻿=== FILE: plugin.gd ===
+@tool
+extends EditorPlugin
+
+func _enter_tree():
+	add_custom_type("Draggable", "Node", preload("res://addons/drag_and_drop/scripts/draggable.gd"), preload("res://addons/drag_and_drop/icons/ToolMove.svg"))
+	add_custom_type("DropZone", "Node2D", preload("res://addons/drag_and_drop/scripts/drop_zone.gd"), preload("res://addons/drag_and_drop/icons/DropZone.svg"))
+
+
+func _exit_tree():
+	# Clean-up of the plugin goes here.
+	remove_custom_type("Draggable")
+	remove_custom_type("DropZone")
+	pass
+
+
+=== FILE: drop_plan.gd ===
+extends Resource
+class_name DropPlan
+
+var can_drop: bool = false
+var drop_target: SnappingSpot = null
+var actions: Array[DropAction] = []
+
+
+=== FILE: drop_action.gd ===
+class_name DropAction extends Resource
+func execute(_zone: DropZone) -> void: pass
+
+
+=== FILE: evict_action.gd ===
+class_name ActionEvict extends DropAction
+
+var previous_occupant: Area2D
+
+func _init(p_previous_occupant: Area2D): 
+	previous_occupant = p_previous_occupant
+
+func execute(zone: DropZone) -> void:
+	DropUtils.clear_occupant_reference(zone, previous_occupant)
+	previous_occupant.queue_free()
+
+
+=== FILE: relocate_action.gd ===
+class_name ActionRelocate extends DropAction
+
+var occupant: Area2D
+var target_spot: SnappingSpot
+
+func _init(p_occupant: Area2D, p_spot: SnappingSpot):
+	occupant = p_occupant
+	target_spot = p_spot
+
+func execute(zone: DropZone) -> void:
+	DropUtils.clear_occupant_reference(zone, occupant)
+	target_spot.occupant = occupant
+	zone.occupant_changed.emit(zone, target_spot, null, occupant)
+
+	var draggable = occupant.get_meta("draggable")
+	if draggable:
+		draggable.move_to(target_spot.point.global_position)
+
+
+=== FILE: draggable_type.gd ===
+class_name DraggableType extends Resource
+@export var id: String = ""
+
+
+=== FILE: drop_behavior_base.gd ===
+## Base class for defining drop behaviors for a DropZone.
+##
+## A DropBehavior decides whether a snapping spot is valid for a given draggable, 
+## how snapping points are updated when a drop happens and 
+## the final position the draggable should snap to
+@abstract 
+class_name DropBehavior extends Resource
+
+@abstract
+func evaluate(zone: DropZone, dropped_area: Area2D) -> DropPlan
+
+
+=== FILE: drop_behavior_rearrange.gd ===
+class_name DropBehaviorRearrange extends DropBehavior
+
+func evaluate(zone: DropZone, dropped_area: Area2D) -> DropPlan:
+	var plan := DropPlan.new()
+	var result := DropUtils.evaluate_drop_target(zone, dropped_area, false)
+	if not result.can_drop:
+		return plan
+	plan.can_drop = true
+	plan.drop_target = result.target
+
+	if plan.drop_target and plan.drop_target.occupant and plan.drop_target.occupant != dropped_area:
+		var free_spot = DropUtils.closest_spot(zone, plan.drop_target.occupant, true)
+		if free_spot:
+			plan.actions.append(ActionRelocate.new(plan.drop_target.occupant, free_spot))
+		else:
+			plan.can_drop = false 
+			
+	return plan
+
+
+=== FILE: drop_behavior_reject.gd ===
+extends DropBehavior
+class_name DropBehaviorReject
+
+func evaluate(zone: DropZone, dropped_area: Area2D) -> DropPlan:
+	var plan := DropPlan.new()
+	var result = DropUtils.evaluate_drop_target(zone, dropped_area, true)
+	if not result.can_drop:
+		return plan
+	plan.can_drop = true
+	plan.drop_target = result.target
+	
+	return plan
+
+
+=== FILE: drop_behavior_replace.gd ===
+class_name DropBehaviorReplace extends DropBehavior
+
+func evaluate(zone: DropZone, dropped_area: Area2D) -> DropPlan:
+	var plan := DropPlan.new()
+	var result := DropUtils.evaluate_drop_target(zone, dropped_area, false)
+	if not result.can_drop:
+		return plan
+	plan.can_drop = true
+	plan.drop_target = result.target
+	
+	# If someone is there, we schedule them for eviction
+	if plan.drop_target and plan.drop_target.occupant and plan.drop_target.occupant != dropped_area:
+		plan.actions.append(ActionEvict.new(plan.drop_target.occupant))
+		
+	return plan
+
+
+=== FILE: draggable.gd ===
+@tool
+extends Node
+
+class_name Draggable
+
+enum DRAGGABLE_STATE {IDLE, DRAGGING, DROPPING, RETURNING, AUTO_MOVING}
+@export_group("Config")
+## Optional explicit reference to the target Area2D. Overwrites parent and owner references.
+## The Area2D has to be an ancestor of this node.
+@export var area_reference: Area2D = null:
+	set(value):
+		area_reference = value
+		update_configuration_warnings()
+## Name of the InputMap action that handles drag start and end
+@export var drag_input_name: StringName = &"draggable_click":
+	set(value):
+		drag_input_name = value
+		update_configuration_warnings()
+## Node the draggable's area temporarily re-parents to while in DRAGGING state.
+## The area shouldn't be an ancestor of this node. If unset, will use the tree root.
+## [br][br]
+## [i]Hint[/i]: 
+## If the scene root is the Area2D, either assign [code]drag_layer_parent[/code] at runtime once the game tree is available or
+## transform the scene so that the root has the area as a child, 
+## allowing the [code]drag_layer_parent[/code] can be attached to something other than the area. 
+@export var drag_layer_parent: Node = null
+
+@export_group("Behavior")
+## Controls the speed at which the draggable node moves towards the cursor or towards the drop zone when dropped or returning.
+## Differences in values between (1..25) are more noticeable.
+## A maximum of 50 is allowed for when one wants to stick the draggable to the cursor
+@export_range(1.0, 50.0, 1.0) var dragging_speed: float = 25.0
+## Z_Index dragged area will take. It is recommended to not
+## set it to maximum as z_index is additive for children if 
+## z_as_relative is set and they also have to be outside of the defined range
+@export_range(-4096, 4096) var drag_z_index: int = 1000
+## Enable to use relative dragging instead of snapping the center to the mouse
+@export var relative_dragging: bool = false
+## Information used by dropzones for checking if Draggable is accepted.
+## The base DraggableType has an id that's checked by the
+## dropzone for matching
+@export var type: DraggableType = DraggableType.new()
+		
+var state = DRAGGABLE_STATE.IDLE
+
+var initial_z_index = 0
+var drag_offset := Vector2.ZERO
+var previous_position := Vector2.ZERO
+var previous_parent = null
+var next_position := Vector2.ZERO
+
+var a: Area2D = null
+
+const CLOSE_ENOUGH_THRESHOLD = .5;
+
+signal drag_started(area: Area2D)
+signal drag_ended(area: Area2D, drop_spot: SnappingSpot)
+signal state_changed(area: Area2D, state: DRAGGABLE_STATE)
+
+#region Lifecycle
+
+func _ready():
+	var candidate: Area2D = null
+
+	if area_reference != null:
+		assert(area_reference is Area2D, "Selected node for 'area_reference' must be an Area2D")
+		assert(area_reference.is_ancestor_of(self), "Selected Area2D must be an ancestor of this Draggable")
+		candidate = area_reference
+	elif get_parent() is Area2D:
+		candidate = get_parent() as Area2D
+	elif owner is Area2D:
+		candidate = owner as Area2D
+	a = candidate
+	assert(a != null, "Draggable node '%s' must be linked to an Area2D (export, parent, or owner)" % name)
+	if a != null and not Engine.is_editor_hint():
+		a.set_meta("draggable", self)
+
+	initial_z_index = a.z_index
+	previous_position = a.global_position
+	next_position = a.global_position
+	a.input_event.connect(_on_input_event)
+
+func _process(delta):
+	match state:
+		DRAGGABLE_STATE.IDLE:
+			pass
+		DRAGGABLE_STATE.DRAGGING:
+			_handle_dragging(delta)
+		DRAGGABLE_STATE.DROPPING:
+			_handle_dropping(delta)	
+		DRAGGABLE_STATE.RETURNING:
+			_handle_returning(delta)
+		DRAGGABLE_STATE.AUTO_MOVING:
+			_handle_auto_moving(delta)
+
+func _handle_dragging(delta: float) -> void:
+	a.global_position = _move_toward(a.global_position, a.get_global_mouse_position() + drag_offset, delta)
+
+func _handle_dropping(delta: float) -> void:
+	a.global_position = _move_toward(a.global_position, next_position, delta)
+
+	if a.global_position.distance_squared_to(next_position) <= CLOSE_ENOUGH_THRESHOLD:
+		previous_position = next_position
+		a.global_position = next_position
+		_change_state_to(DRAGGABLE_STATE.IDLE)
+
+func _handle_returning(delta: float) -> void:
+	a.global_position = _move_toward(a.global_position, previous_position, delta)
+	
+	if a.global_position.distance_squared_to(next_position) <= CLOSE_ENOUGH_THRESHOLD:
+		a.global_position = previous_position
+		
+		if previous_parent and a.get_parent() != previous_parent:
+			a.reparent(previous_parent)
+		_change_state_to(DRAGGABLE_STATE.IDLE)
+
+func _handle_auto_moving(delta: float) -> void:
+	a.global_position = _move_toward(a.global_position, next_position, delta)
+	
+	if a.global_position.distance_squared_to(next_position) <= CLOSE_ENOUGH_THRESHOLD:
+		previous_position = next_position
+		a.global_position = next_position
+		_change_state_to(DRAGGABLE_STATE.IDLE)
+
+func _exp_decay(from: Vector2, to: Vector2, decay: float, delta: float) -> Vector2:
+	return to + (from - to) * exp(-decay * delta)
+
+func _move_toward(from: Vector2, to: Vector2, delta: float) -> Vector2:
+	return _exp_decay(from, to, dragging_speed, delta)
+
+#endregion
+
+#region Input Handling
+
+func _on_input_event(_viewport, event, _shape_idx):
+	if event.is_action_pressed(drag_input_name) and state == DRAGGABLE_STATE.IDLE:
+		previous_position = a.global_position
+		previous_parent = a.get_parent()
+		if drag_layer_parent:
+			assert(not a.is_ancestor_of(drag_layer_parent), "Drag Layer Parent cannot be a descendant of the draggable's Area2D, this would create a reparenting loop.")
+			a.reparent(drag_layer_parent)
+		else:
+			a.reparent(get_tree().root)
+		
+		if relative_dragging:
+			drag_offset = a.global_position - event.position
+		
+		_change_state_to(DRAGGABLE_STATE.DRAGGING)
+		drag_started.emit(a)
+
+func _input(event):
+	if event.is_action_released(drag_input_name) and state == DRAGGABLE_STATE.DRAGGING:
+		var overlapping_areas = a.get_overlapping_areas()
+		var dropzone: DropZone = _get_closest_dropzone(overlapping_areas)
+		
+		var drop_spot: SnappingSpot = null
+		if dropzone:
+			drop_spot = dropzone.try_dropping(a)
+		
+		# Emit with the result (null if returning)
+		drag_ended.emit(a, drop_spot)
+		
+		if drop_spot:
+			move_to(drop_spot.point.global_position, DRAGGABLE_STATE.DROPPING)
+		else:
+			move_to(previous_position, DRAGGABLE_STATE.RETURNING)
+#endregion
+
+#region Exposed Functions
+
+func move_to(pos: Vector2, reason := DRAGGABLE_STATE.AUTO_MOVING) -> void:
+	if state != DRAGGABLE_STATE.RETURNING:
+		next_position = pos
+	_change_state_to(reason)
+
+#endregion
+
+#region Internal Functions
+
+func _change_state_to(new_state: DRAGGABLE_STATE) -> void:
+	if state == new_state:
+		return
+	state = new_state
+	
+	match state:
+		DRAGGABLE_STATE.DRAGGING, DRAGGABLE_STATE.AUTO_MOVING:
+			a.z_index = drag_z_index
+		_:
+			a.z_index = initial_z_index
+	state_changed.emit(a, state)
+
+func _get_closest_dropzone(areas: Array[Area2D]) -> DropZone:
+	if not areas:
+		return null
+		
+	var closest_zone: DropZone = null
+	var best_distance := INF
+		
+	for area in areas:
+		var found_zone: DropZone = null
+		for child in area.get_children():
+			if child is DropZone:
+				found_zone = child
+				break;
+				
+		if not found_zone:
+			continue
+		
+		var distance := a.global_position.distance_to(area.global_position)
+		
+		if distance < best_distance:
+			best_distance = distance
+			closest_zone = found_zone
+	
+	return closest_zone
+	
+#endregion
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = PackedStringArray()
+	
+	if not ProjectSettings.has_setting("input/" + drag_input_name):
+		warnings.append("Action " + str(drag_input_name) + " could not be found in the InputMap")
+	if area_reference != null and not (area_reference is Area2D):
+		warnings.append("Selected node for 'area_reference' is not an Area2D")
+	if area_reference != null and area_reference is Area2D and not area_reference.is_ancestor_of(self):
+		warnings.append("Selected Area2D is not an ancestor of this Draggable; prefer parent/grandparent to avoid cross-branch issues")
+	if area_reference == null and not (get_parent() is Area2D) and not (owner is Area2D):
+		warnings.append("No Area2D found via export, parent, or owner; Draggable requires an Area2D")
+		
+	var check_a = area_reference #if area_reference else (get_parent() if get_parent() is Area2D else owner)
+	if not check_a:
+		var parent = get_parent()
+		check_a = parent if parent is Area2D else owner
+	if check_a and drag_layer_parent and check_a.is_ancestor_of(drag_layer_parent):
+		warnings.append("Drag Layer Parent cannot be a descendant of the draggable's Area2D, this would create a reparenting loop.")
+	return warnings
+
+
+=== FILE: drop_utils.gd ===
+class_name DropUtils
+
+static func is_area_type_accepted(zone: DropZone, area: Area2D) -> bool:
+	var draggable = area.get_meta("draggable")
+	if not draggable:
+		return false
+
+	for type in zone.accepted_draggable_types:
+		if type.id == draggable.type.id:
+			return true
+	return false
+
+static func clear_occupant_reference(zone: DropZone, occupant: Area2D) -> void:
+	for spot in zone.snapping_points:
+		if spot.occupant == occupant:
+			spot.occupant = null
+			zone.occupant_changed.emit(zone, spot, occupant, null)
+			return
+
+static func evaluate_drop_target(
+	zone: DropZone,
+	area: Area2D,
+	require_free: bool
+) -> DropTargetResult:
+	var result := DropTargetResult.new()
+
+	if not is_area_type_accepted(zone, area):
+		return result
+
+	if zone.snap_style == DropZone.SNAP_STYLE.NO_SNAP:
+		result.can_drop = true
+		result.target = null
+		return result
+
+	var target := closest_spot(zone, area, require_free)
+
+	if target:
+		result.can_drop = true
+		result.target = target
+	return result
+
+static func closest_spot(
+	zone: DropZone,
+	area: Area2D,
+	require_free: bool = false
+) -> SnappingSpot:
+	var best = null
+	var best_dist := INF
+
+	for spot in zone.snapping_points:
+		if require_free and spot.occupant != null:
+			continue
+
+		var d := area.global_position.distance_to(
+			spot.point.global_position
+		)
+
+		if d < best_dist:
+			best_dist = d
+			best = spot
+
+	return best
+
+
+=== FILE: drop_zone.gd ===
+@tool
+extends Node2D
+class_name DropZone
+
+signal drop_evaluated(zone: DropZone, area: Area2D, plan: DropPlan)
+signal drop_rejected(zone: DropZone, area: Area2D, plan: DropPlan)
+signal drop_accepted(zone: DropZone, area: Area2D, plan: DropPlan)
+signal drop_applied(zone: DropZone, area: Area2D, plan: DropPlan)
+signal occupant_changed(zone: DropZone, spot: SnappingSpot, old_occupant: Area2D, new_occupant: Area2D)
+
+enum SNAP_STYLE { 
+	## Draggable won't snap. It will, instead, stay at its position when dragging stops. 
+	NO_SNAP, 
+	## Draggable snaps to the transform center of the parent area 
+	SNAP_CENTER, 
+	## Draggable snaps to marker children of the DropZone. If there are no marker children, defaults to NO_SNAP 
+	SNAP_MARKERS 
+}
+
+@export_group("Config")
+## Optional explicit reference to the target Area2D. Overwrites parent and owner references.
+## The Area2D has to be an ancestor of this node.
+@export var area_reference: Area2D = null:
+	set(value):
+		area_reference = value
+		update_configuration_warnings()
+## The node under which draggables will be reparented
+@export var attach_spot: Node2D
+
+@export_group("Behavior")
+## Defines what happens when a Draggable is dropped onto this DropZone. 
+## A DropBehavior's role is to determine if the Draggable is accepted and 
+## what `DropActions` will be executed.
+@export var drop_behavior: DropBehavior = DropBehaviorReject.new()
+@export var snap_style := SNAP_STYLE.SNAP_MARKERS
+## Information used for checking if Draggable is accepted.
+## The base DraggableType has an id that's checked by the
+## dropzone for matching
+@export var accepted_draggable_types: Array[DraggableType] = []
+var snapping_points: Array[SnappingSpot] = []
+var a: Area2D = null
+
+#region Lifecycle
+
+func _ready():
+	var candidate: Area2D = null
+	if area_reference != null:
+		assert(area_reference is Area2D, "Selected node for 'area_reference' must be an Area2D")
+		assert(area_reference.is_ancestor_of(self), "Selected Area2D must be an ancestor of this DropZone")
+		candidate = area_reference
+	elif get_parent() is Area2D:
+		candidate = get_parent() as Area2D
+	elif owner is Area2D:
+		candidate = owner as Area2D
+	a = candidate
+	assert(a != null, "DropZone node '%s' must be linked to an Area2D (export, parent, or owner)" % name)
+	if a != null and not Engine.is_editor_hint():
+		a.set_meta("dropzone", self)
+	if not attach_spot:
+		attach_spot = a
+	if accepted_draggable_types.size() == 0:
+		accepted_draggable_types.append(DraggableType.new())
+	_initialize_snapping_positions()
+
+#endregion
+
+#region Exposed Functions
+
+func try_dropping(area: Area2D):
+	var plan := drop_behavior.evaluate(self, area)
+	drop_evaluated.emit(self, area, plan)
+	
+	if plan.can_drop:
+		drop_accepted.emit(self, area, plan)
+		_apply_plan(plan, area)
+		drop_applied.emit(self, area, plan)
+		
+		if plan.drop_target:
+			return plan.drop_target
+		
+		if snap_style == SNAP_STYLE.NO_SNAP:
+			return _find_ephemeral_spot_for(area)
+	
+	drop_rejected.emit(self, area, plan)
+	return null
+
+#endregion
+
+#region Internal Functions
+
+func _initialize_snapping_positions():
+	snapping_points.clear()
+
+	match snap_style:
+		SNAP_STYLE.NO_SNAP:
+			# No snapping points at all
+			return
+
+		SNAP_STYLE.SNAP_CENTER:
+			var spot := SnappingSpot.new()
+			spot.point = a
+			spot.occupant = null
+			snapping_points.append(spot)
+
+		SNAP_STYLE.SNAP_MARKERS:
+			for child in get_children():
+				if child is Marker2D:
+					var spot := SnappingSpot.new()
+					spot.point = child
+					spot.occupant = null
+					snapping_points.append(spot)
+
+			if snapping_points.is_empty():
+				return
+	
+func _apply_plan(plan: DropPlan, dropped_area: Area2D) -> void:
+	# 1. In case I move the draggable within the same area, I detach it first
+	_detach(dropped_area)
+
+	# 2. Execute side-effects (Evictions, Relocations, anything really)
+	for action in plan.actions:
+		action.execute(self)
+
+	# 3. Finalize drop
+	if plan.drop_target:
+		var current_occupant = plan.drop_target.occupant
+		if current_occupant and current_occupant != dropped_area:
+			_detach(current_occupant)
+		
+		plan.drop_target.occupant = dropped_area
+		occupant_changed.emit(self, plan.drop_target, null, dropped_area)
+		_attach(dropped_area)
+	else:
+		# NO_SNAP: still track occupancy so signals and utilities work
+		if snap_style == SNAP_STYLE.NO_SNAP:
+			_attach(dropped_area)
+			_make_ephemeral_spot(dropped_area)
+	
+func _attach(area: Area2D):
+	if area.get_parent():
+		area.reparent(attach_spot)
+	else:
+		attach_spot.add_child(area)
+	
+	var draggable = area.get_meta("draggable")
+	if draggable:
+		if not draggable.drag_started.is_connected(_on_draggable_drag_started):
+			draggable.drag_started.connect(_on_draggable_drag_started)
+		if not draggable.drag_ended.is_connected(_on_draggable_drag_ended):
+			draggable.drag_ended.connect(_on_draggable_drag_ended)
+func _detach(area: Area2D):
+	DropUtils.clear_occupant_reference(self, area)
+	
+	var draggable = area.get_meta("draggable")
+	if draggable and draggable.drag_started.is_connected(_on_draggable_drag_started):
+			draggable.drag_started.disconnect(_on_draggable_drag_started)
+	if draggable and draggable.drag_ended.is_connected(_on_draggable_drag_ended):
+		draggable.drag_ended.disconnect(_on_draggable_drag_ended)
+
+	# For NO_SNAP, remove ephemeral spots that tracked this area
+	if snap_style == SNAP_STYLE.NO_SNAP:
+		_remove_ephemeral_spots_for(area)
+#endregion
+
+#region Signal Handlers
+
+func _on_draggable_drag_started(area: Area2D):
+	# For NO_SNAP, remove ephemeral spots that were tracking this area
+	if snap_style == SNAP_STYLE.NO_SNAP:
+		_remove_ephemeral_spots_for(area)
+
+func _on_draggable_drag_ended(area: Area2D, drop_spot: SnappingSpot):
+	# If drop_spot is null, the draggable is returning
+	if drop_spot != null:
+		if not snapping_points.has(drop_spot):
+			_detach(area)
+		return
+	
+	var draggable = area.get_meta("draggable")
+	
+	if snap_style == SNAP_STYLE.NO_SNAP:
+		_attach(area)
+		_make_ephemeral_spot(area)
+	else:
+		for spot in snapping_points:
+			if spot.occupant == area:
+				_attach(area)
+				break
+
+#endregion
+
+#region Ephemeral Spot Helpers (NO_SNAP)
+
+func _make_ephemeral_spot(area: Area2D) -> SnappingSpot:
+	var spot := SnappingSpot.new()
+	spot.point = area
+	spot.occupant = area
+	spot.ephemeral = true
+	snapping_points.append(spot)
+	occupant_changed.emit(self, spot, null, area)
+	return spot
+
+func _remove_ephemeral_spots_for(area: Area2D) -> void:
+	for i in range(snapping_points.size() - 1, -1, -1):
+		var s: SnappingSpot = snapping_points[i]
+		if s.ephemeral and s.point == area:
+			snapping_points.remove_at(i)
+
+func _find_ephemeral_spot_for(area: Area2D) -> SnappingSpot:
+	for s in snapping_points:
+		if s.ephemeral and s.point == area:
+			return s
+	return null
+
+#endregion
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings = PackedStringArray()
+	if area_reference != null and not (area_reference is Area2D):
+		warnings.append("Selected node for 'area_reference' is not an Area2D")
+	if area_reference != null and area_reference is Area2D and not area_reference.is_ancestor_of(self):
+		warnings.append("Selected Area2D is not an ancestor of this DropZone; prefer parent/grandparent to avoid cross-branch issues")
+	if area_reference == null and not (get_parent() is Area2D) and not (owner is Area2D):
+		warnings.append("No Area2D found via export, parent, or owner; DropZone requires an Area2D")
+	return warnings
+
+
+=== FILE: drop_target_result.gd ===
+extends RefCounted
+class_name DropTargetResult
+
+var can_drop: bool = false
+var target: SnappingSpot = null
+
+
+=== FILE: snapping_spot.gd ===
+extends RefCounted
+class_name SnappingSpot
+
+var point: Node2D
+var occupant: Area2D = null
+var ephemeral: bool = false
+
+
+=== FILE: intro.gd ===
+extends Control
+
+@export_file("*.tscn", "*.scn") var next_scene: String = "res://cutscenes/intro_1/intro_1.tscn"
+
+var _label: RichTextLabel
+var _timer: Timer
+var _audio: AudioStreamPlayer2D
+var _letter_count: int = 0
+
+const NORMAL_SPEED: float = 0.03
+var _is_finished: bool = false
+
+func _ready() -> void:
+	_label = get_node("RichTextLabel")
+	_timer = get_node("Timer")
+	_audio = get_node("AudioStreamPlayer2D")
+
+	_label.visible_characters = 0
+
+	_timer.wait_time = NORMAL_SPEED
+	_timer.timeout.connect(_on_timer_timeout)
+	_timer.start()
+
+func _on_timer_timeout() -> void:
+	if _label.visible_characters < _label.get_total_character_count():
+		_label.visible_characters += 1
+		_letter_count += 1
+
+		var current_text: String = _label.get_parsed_text()
+		var char_index: int = _label.visible_characters - 1
+		
+		# ÐÐµÐ±Ð¾Ð»ÑŒÑˆÐ°Ñ Ð·Ð°Ñ‰Ð¸Ñ‚Ð° Ð¾Ñ‚ Ð²Ñ‹Ñ…Ð¾Ð´Ð° Ð·Ð° Ð³Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ ÑÑ‚Ñ€Ð¾ÐºÐ¸ (Ð½Ð° Ð²ÑÑÐºÐ¸Ð¹ ÑÐ»ÑƒÑ‡Ð°Ð¹)
+		if char_index < 0 or char_index >= current_text.length():
+			return
+			
+		var current_char: String = current_text[char_index]
+		var next_delay: float = NORMAL_SPEED
+
+		if current_char in [".", "?", "!"]:
+			next_delay = 0.4 # ÐŸÐ°ÑƒÐ·Ð° Ð½Ð° Ñ‚Ð¾Ñ‡ÐºÐµ
+		elif current_char in [",", "-", ":"]:
+			next_delay = 0.2 # ÐŸÐ°ÑƒÐ·Ð° Ð½Ð° Ð·Ð°Ð¿ÑÑ‚Ð¾Ð¹
+		else:
+			next_delay = NORMAL_SPEED + randf_range(-0.01, 0.01)
+
+		_timer.wait_time = maxf(0.01, next_delay)
+
+		if current_char != " " and current_char != "\n" and current_char != "\r":
+			if _letter_count % 4 == 0:
+				_audio.pitch_scale = randf_range(0.95, 1.05)
+				_audio.play()
+	else:
+		# Ð¢ÐµÐºÑÑ‚ Ð¿Ð¾Ð»Ð½Ð¾ÑÑ‚ÑŒÑŽ Ð½Ð°Ð¿ÐµÑ‡Ð°Ñ‚Ð°Ð»ÑÑ
+		_timer.stop()
+		_timer.timeout.disconnect(_on_timer_timeout)
+
+		# Ð–Ð´ÐµÐ¼ Ñ€Ð¾Ð²Ð½Ð¾ 3 ÑÐµÐºÑƒÐ½Ð´Ñ‹ (Ð°Ð½Ð°Ð»Ð¾Ð³ ToSignal + CreateTimer)
+		await get_tree().create_timer(3.0).timeout
+		
+		# ÐŸÐµÑ€ÐµÑ…Ð¾Ð´Ð¸Ð¼ Ð½Ð° ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÑƒÑŽ ÑÑ†ÐµÐ½Ñƒ
+		_change_scene()
+
+# ÐŸÑ€Ð¾Ð¿ÑƒÑÐº Ð·Ð°ÑÑ‚Ð°Ð²ÐºÐ¸ Ð¿Ð¾ Ð½Ð°Ð¶Ð°Ñ‚Ð¸ÑŽ ÐºÐ»Ð°Ð²Ð¸ÑˆÐ¸ Ð¸Ð»Ð¸ ÐºÐ»Ð¸ÐºÑƒ Ð¼Ñ‹ÑˆÐ¸
+func _unhandled_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton and event.pressed) or \
+	   (event is InputEventKey and event.pressed):
+		_change_scene()
+
+func _change_scene() -> void:
+	if _is_finished:
+		return
+	_is_finished = true
+
+	get_tree().change_scene_to_file(next_scene)
+
+
+=== FILE: intro_1.gd ===
+extends Control
+
+@export_file("*.tscn", "*.scn") var _main_menu_scene: String = "res://main_menu/main_menu.tscn"
+
+var _anim_player: AnimationPlayer
+var _is_finished: bool = false
+
+func _ready() -> void:
+	_anim_player = get_node("AnimationPlayer")
+	
+	_anim_player.animation_finished.connect(_on_animation_finished)
+	
+	_anim_player.play("Logo")
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Logo":
+		_go_to_menu()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton and event.pressed) or \
+	   (event is InputEventKey and event.pressed):
+		_go_to_menu()
+
+func _go_to_menu() -> void:
+	if _is_finished:
+		return
+	_is_finished = true
+	
+	_anim_player.animation_finished.disconnect(_on_animation_finished)
+	get_tree().change_scene_to_file(_main_menu_scene)
+
+
+=== FILE: background_music.gd ===
+extends Node
+
+@export var music: AudioStream = preload("res://sounds/theme.ogg")
+
+var _audio_player: AudioStreamPlayer
+
+func _ready() -> void:
+    _audio_player = AudioStreamPlayer.new()
+    _audio_player.stream = music
+    _audio_player.bus = "Music"
+    
+    add_child(_audio_player)
+    _audio_player.play()
+
+
+
+=== FILE: btn_scene.gd ===
+extends BaseButton
+
+@export_file("*.tscn") var target_scene_path: String
+
+@export var use_transition: bool = true
+
+func _ready() -> void:
+	pressed.connect(_on_button_pressed)
+
+func _on_button_pressed() -> void:
+	print(target_scene_path)
+
+	if target_scene_path.is_empty():
+		push_warning("ÐšÐ½Ð¾Ð¿ÐºÐ° '%s': ÐÐµ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð° Ñ†ÐµÐ»ÐµÐ²Ð°Ñ ÑÑ†ÐµÐ½Ð° (PackedScene) Ð² Ð˜Ð½ÑÐ¿ÐµÐºÑ‚Ð¾Ñ€Ðµ!" % name)
+		return
+
+	if use_transition:
+		await Transition.fade_in()
+
+	var error = get_tree().change_scene_to_file(target_scene_path)
+	if error != OK:
+		push_error("ÐšÐ½Ð¾Ð¿ÐºÐ° '%s': ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð·Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ ÑÑ†ÐµÐ½Ñƒ. ÐšÐ¾Ð´ Ð¾ÑˆÐ¸Ð±ÐºÐ¸: %d" % [name, error])
+
+
+
+=== FILE: btn_sound.gd ===
+extends Node
+
+@export var click_sound: AudioStream = preload("res://sounds/button-up.wav")
+
+var _audio_player: AudioStreamPlayer
+
+func _ready() -> void:
+    _audio_player = AudioStreamPlayer.new()
+    _audio_player.stream = click_sound
+    _audio_player.bus = "Sounds"
+    add_child(_audio_player)
+    
+    get_tree().node_added.connect(_on_node_added)
+
+func _on_node_added(node: Node) -> void:
+    if node is BaseButton:
+        if not node.pressed.is_connected(_play_click_sound):
+            node.pressed.connect(_play_click_sound)
+
+func _play_click_sound() -> void:
+    _audio_player.play()
+
+
+=== FILE: preload.gd ===
+extends Node
+
+func _ready() -> void:
+    _load_settings()
+    WindowGlobal.center_window()
+
+func _load_settings() -> void:
+    var config = ConfigFile.new()
+
+    var err = config.load("user://settings.cfg")
+	
+    if err != OK:
+        print("Ð¤Ð°Ð¹Ð» Ð½Ð°ÑÑ‚Ñ€Ð¾ÐµÐº Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½ Ð¸Ð»Ð¸ Ð¿Ð¾Ð²Ñ€ÐµÐ¶Ð´ÐµÐ½. Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ.")
+        _save_default_settings()
+        return
+
+    var sound_vol = config.get_value("volume", "sound", 1.0)
+    var music_vol = config.get_value("volume", "music", 1.0)
+	
+    var sound_bus = AudioServer.get_bus_index("Sounds")
+    var music_bus = AudioServer.get_bus_index("Music")
+	
+    if sound_bus != -1:
+        AudioServer.set_bus_volume_db(sound_bus, linear_to_db(sound_vol))
+    if music_bus != -1:
+        AudioServer.set_bus_volume_db(music_bus, linear_to_db(music_vol))
+
+    var res_x = config.get_value("display", "resolution_x", 1920)
+    var res_y = config.get_value("display", "resolution_y", 1080)
+    DisplayServer.window_set_size(Vector2i(res_x, res_y))
+
+
+    var is_fullscreen = config.get_value("display", "fullscreen", false)
+    if is_fullscreen:
+        DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+    else:
+        DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
+    WindowGlobal.center_window()
+
+func _save_default_settings() -> void:
+    var config = ConfigFile.new()
+    config.set_value("display", "fullscreen", true)
+    config.set_value("display", "resolution_x", 1920)
+    config.set_value("display", "resolution_y", 1080)
+    config.set_value("volume", "music", 1.0)
+    config.set_value("volume", "sound", 1.0)
+    config.save("user://settings.cfg")
+	
+
+
+
+=== FILE: window.gd ===
+extends Node
+
+func center_window() -> void:
+	var screen = DisplayServer.window_get_current_screen()
+	var screen_rect = DisplayServer.screen_get_usable_rect(screen)
+	var window_size = DisplayServer.window_get_size()
+	
+	var target_pos = screen_rect.position + (screen_rect.size - window_size) / 2
+	DisplayServer.window_set_position(target_pos)
+
+
+=== FILE: cursor.gd ===
+extends Sprite2D
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+func _process(_delta: float) -> void:
+	position = get_viewport().get_mouse_position()
+	
+	var current_shape = Input.get_current_cursor_shape()
+	
+	match current_shape:
+		Input.CURSOR_ARROW:
+			frame = 0
+		Input.CURSOR_POINTING_HAND:
+			frame = 1
+		_:
+			frame = 0
+
+
+=== FILE: transition.gd ===
+extends CanvasLayer
+
+@onready var color_rect: ColorRect = $ColorRect
+
+func fade_in(duration: float = 0.1, extra_delay: float = 0.3) -> void:
+	color_rect.color.a = 0.0
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(color_rect, "color:a", 1.0, duration)
+	await get_tree().create_timer(duration +extra_delay).timeout
+
+func fade_out(duration: float = 0.1, extra_delay: float = 0.3) -> void:
+	color_rect.color.a = 1.0
+	await get_tree().create_timer(extra_delay).timeout
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(color_rect, "color:a", 0.0, duration)
+	await get_tree().create_timer(duration).timeout
+
+
+=== FILE: main_menu.gd ===
+extends Control
+
+static var _init: bool = false
+
+func _ready() -> void:
+	if _init:
+		await Transition.fade_out()
+	else:
+		_init = true
+
+	print("_ready")
+
+func _on_play_button_pressed() -> void:
+	print("_on_play_button_pressed")
+
+func _on_useless_button_pressed() -> void:
+	print("_on_useless_button_pressed")
+	await get_tree().create_timer(0.2).timeout
+	get_tree().quit()
+
+
+func _on_appeal_button_pressed() -> void:
+	print("_on_appeal_button_pressed")
+	var appeal_url := "https://ppss-team.github.io/appeal"
+	OS.shell_open(appeal_url)
+
+
+=== FILE: settings.gd ===
+extends Control
+
+@onready var music_bus_index = AudioServer.get_bus_index("Music")
+@onready var sound_bus_index = AudioServer.get_bus_index("Sounds")
+
+@onready var fullscreen_checkbox = $Fullscreen/Checkbox
+var fullscreen_mimic_states = [ # ÑÑ‚Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ñ‚.Ðº. ÐµÑÑ‚ÑŒ 3 Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚Ð°, ÐºÐ¾Ð³Ð´Ð° Ð¾ÐºÐ½Ð¾ ÐºÐ°Ðº Ð±Ñ‹ Ð² fullscreen (Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ ÑÐ°Ð¼ fullscreen), Ñ‚Ð°Ðº Ñ‡Ñ‚Ð¾ Ð´Ð°, Ñ‚Ð°ÐºÐ¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾ÑÑ‚Ñ‹Ð»ÑŒ
+DisplayServer.WINDOW_MODE_FULLSCREEN,  
+DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
+DisplayServer.WINDOW_MODE_MAXIMIZED
+]
+
+@onready var resolution_option = $WindowSize/OptionButton
+var resolutions = [
+	Vector2i(640, 360),
+	Vector2i(800, 600),
+	Vector2i(1024, 768),
+	Vector2i(1280, 720),
+	Vector2i(1366, 768),
+	Vector2i(1600, 900),
+	Vector2i(1920, 1080),
+	Vector2i(2560, 1440),
+	Vector2i(3840, 2160)
+]
+
+@onready var sound_btn_plus = $SoundVolume/ButtonPlus
+@onready var sound_btn_minus = $SoundVolume/ButtonMinus
+@onready var sound_bar = $SoundVolume/ProgressBar
+
+@onready var music_btn_plus = $MusicVolume/ButtonPlus
+@onready var music_btn_minus = $MusicVolume/ButtonMinus
+@onready var music_bar = $MusicVolume/ProgressBar
+
+func _ready() -> void:
+	Transition.fade_out()
+
+	var sound_linear = db_to_linear(AudioServer.get_bus_volume_db(sound_bus_index))
+	sound_bar.value = snapped(sound_linear, 0.1)
+	sound_btn_plus.pressed.connect(_on_sound_btn_pressed.bind(true))
+	sound_btn_minus.pressed.connect(_on_sound_btn_pressed.bind(false))
+
+	var music_linear = db_to_linear(AudioServer.get_bus_volume_db(music_bus_index))
+	music_bar.value = snapped(music_linear, 0.1)
+	music_btn_plus.pressed.connect(_on_music_btn_pressed.bind(true))
+	music_btn_minus.pressed.connect(_on_music_btn_pressed.bind(false))
+
+	var is_fullscreen = DisplayServer.window_get_mode() in fullscreen_mimic_states
+	fullscreen_checkbox.button_pressed = is_fullscreen
+	fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
+
+	resolution_option.disabled = is_fullscreen
+	for resolution in resolutions:
+		resolution_option.add_item(str(resolution.x) + "x" + str(resolution.y))
+
+	var current_resolution = DisplayServer.window_get_size()
+	var current_index = resolutions.find(current_resolution)
+	if current_index != -1:
+		resolution_option.selected = current_index
+	
+	resolution_option.item_selected.connect(_on_resolution_selected)
+		
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		resolution_option.disabled = true
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		resolution_option.disabled = false
+	WindowGlobal.center_window()
+	_on_settings_changed()
+
+func _on_resolution_selected(index: int) -> void:
+	var new_size = resolutions[index]
+	DisplayServer.window_set_size(new_size)
+	WindowGlobal.center_window()
+	_on_settings_changed()
+
+func _on_sound_btn_pressed(is_plus: bool) -> void:
+	var step = 0.1
+	var new_value = sound_bar.value + (step if is_plus else -step)
+
+	new_value = clampf(new_value, 0.0, 1.0)
+	AudioServer.set_bus_volume_db(sound_bus_index, linear_to_db(new_value))
+	sound_bar.value = snapped(new_value, step)
+	_on_settings_changed()
+
+func _on_music_btn_pressed(is_plus: bool) -> void:
+	var step = 0.1
+	var new_value = music_bar.value + (step if is_plus else -step)
+
+	new_value = clampf(new_value, 0.0, 1.0)
+	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(new_value))
+	music_bar.value = snapped(new_value, step)
+	_on_settings_changed()
+
+func _on_settings_changed() -> void:
+	var config = ConfigFile.new()
+	
+	config.set_value("display", "fullscreen", true)
+	config.set_value("display", "resolution_x", DisplayServer.window_get_size().x)
+	config.set_value("display", "resolution_y", DisplayServer.window_get_size().y)
+
+	config.set_value("volume", "music", music_bar.value)
+	config.set_value("volume", "sound", sound_bar.value)
+
+	var e = config.save("user://settings.cfg")
+	if e == OK:
+		print("ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹ Ñ‡ÐµÑ€ÐµÐ· ConfigFile!")
+	else:
+		print("ÐžÑˆÐ¸Ð±ÐºÐ° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ: ", e)
+
+

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4kwy36m3br80"
-path="res://.godot/imported/dashed-nocolor-nofill.png-1f7e217738142315f3e94ab5994f57f0.ctex"
+path="res://.godot/imported/dashed-nocolor-nofill.png-3c869e01401a35826418470ea8b5786c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://settings/images/dashed-nocolor-nofill.png"
-dest_files=["res://.godot/imported/dashed-nocolor-nofill.png-1f7e217738142315f3e94ab5994f57f0.ctex"]
+source_file="res://Settings/images/dashed-nocolor-nofill.png"
+dest_files=["res://.godot/imported/dashed-nocolor-nofill.png-3c869e01401a35826418470ea8b5786c.ctex"]
 
 [params]
 
